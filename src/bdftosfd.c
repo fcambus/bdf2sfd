@@ -104,9 +104,23 @@ main(int argc, char *argv[]) {
 	}
 
 	bool readglyph = false;
+	char *token = NULL;
+	char *encoding;
 
 	while (fgets(lineBuffer, LINE_LENGTH_MAX, bdfFile)) {
 		if (*lineBuffer) {
+			if (!strncmp(lineBuffer, "ENCODING", 8)) {
+				token = strtok(lineBuffer, " \t");
+
+				if (token)
+					encoding = strtok(NULL, " \n");
+
+				if (encoding)
+					fprintf(stdout, "Encoding: %s %s %s\n", encoding, encoding, encoding);
+
+				continue;
+			}
+
 			if (!strncmp(lineBuffer, "BITMAP", 6)) {
 				readglyph = true;
 				glyphes++;

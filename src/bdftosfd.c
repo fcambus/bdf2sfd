@@ -103,7 +103,20 @@ main(int argc, char *argv[]) {
 		return EXIT_FAILURE;
 	}
 
+	bool readglyph = false;
+
 	while (fgets(lineBuffer, LINE_LENGTH_MAX, bdfFile)) {
+		if (*lineBuffer) {
+			if (!strncmp(lineBuffer, "BITMAP", 6)) {
+				readglyph = true;
+				continue;
+			}
+			if (!strncmp(lineBuffer, "ENDCHAR", 7)) {
+				readglyph = false;
+				continue;
+			}
+		}
+
 		lines++;
 	}
 

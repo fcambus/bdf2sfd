@@ -43,7 +43,7 @@ int8_t getoptFlag;
 
 char *intputFile;
 
-uint64_t lines;
+uint64_t glyphes;
 double runtime;
 
 void
@@ -109,6 +109,7 @@ main(int argc, char *argv[]) {
 		if (*lineBuffer) {
 			if (!strncmp(lineBuffer, "BITMAP", 6)) {
 				readglyph = true;
+				glyphes++;
 				continue;
 			}
 			if (!strncmp(lineBuffer, "ENDCHAR", 7)) {
@@ -116,8 +117,6 @@ main(int argc, char *argv[]) {
 				continue;
 			}
 		}
-
-		lines++;
 	}
 
 	/* Stopping timer */
@@ -127,7 +126,7 @@ main(int argc, char *argv[]) {
 	runtime = elapsed.tv_sec + elapsed.tv_nsec / 1E9;
 
 	/* Printing results */
-	fprintf(stderr, "Processed %" PRIu64 " lines in %f seconds.\n", lines, runtime);
+	fprintf(stderr, "Processed %" PRIu64 " glyphes in %f seconds.\n", glyphes, runtime);
 
 	/* Clean up */
 	fclose(bdfFile);

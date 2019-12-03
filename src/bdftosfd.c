@@ -122,12 +122,24 @@ main(int argc, char *argv[]) {
 			}
 
 			if (!strncmp(lineBuffer, "BITMAP", 6)) {
+				fprintf(stdout, "Width: 512\n");
+				fprintf(stdout, "Flags: HW\n");
+				fprintf(stdout, "LayerCount: 2\n");
+				fprintf(stdout, "Fore\n");
+				fprintf(stdout, "SplineSet\n");
+
 				readglyph = true;
 				glyphes++;
+
 				continue;
 			}
+
 			if (!strncmp(lineBuffer, "ENDCHAR", 7)) {
+				fprintf(stdout, "EndSplineSet\n");
+				fprintf(stdout, "EndChar\n\n");
+
 				readglyph = false;
+
 				continue;
 			}
 		}

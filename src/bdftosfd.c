@@ -4,7 +4,7 @@
  * https://github.com/fcambus/bdftosfd
  *
  * Created:      2019-11-21
- * Last Updated: 2019-12-03
+ * Last Updated: 2019-12-14
  *
  * bdftosfd is released under the BSD 2-Clause license
  * See LICENSE file for details
@@ -144,6 +144,9 @@ main(int argc, char *argv[]) {
 			}
 		}
 	}
+
+	fprintf(stdout, "EndChars\n");
+	fprintf(stdout, "EndSplineFont\n");
 
 	/* Stopping timer */
 	clock_gettime(CLOCK_MONOTONIC, &end);

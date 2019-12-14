@@ -109,6 +109,10 @@ main(int argc, char *argv[]) {
 
 	while (fgets(lineBuffer, LINE_LENGTH_MAX, bdfFile)) {
 		if (*lineBuffer) {
+			if (!strncmp(lineBuffer, "STARTCHAR", 9)) {
+				continue;
+			}
+
 			if (!strncmp(lineBuffer, "ENCODING", 8)) {
 				token = strtok(lineBuffer, " \t");
 

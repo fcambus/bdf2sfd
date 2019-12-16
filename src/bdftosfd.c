@@ -107,6 +107,8 @@ main(int argc, char *argv[]) {
 	char *token = NULL;
 	char *encoding;
 
+	int32_t x, y;
+
 	while (fgets(lineBuffer, LINE_LENGTH_MAX, bdfFile)) {
 		if (*lineBuffer) {
 			if (!strncmp(lineBuffer, "STARTCHAR", 9)) {
@@ -132,6 +134,7 @@ main(int argc, char *argv[]) {
 				fprintf(stdout, "Fore\n");
 				fprintf(stdout, "SplineSet\n");
 
+				y = 704;
 				readglyph = true;
 				glyphes++;
 
@@ -145,6 +148,23 @@ main(int argc, char *argv[]) {
 				readglyph = false;
 
 				continue;
+			}
+
+			if (readglyph) {
+				int32_t row = strtol(lineBuffer, NULL, 16);
+
+				for (size_t column = 0; column < 8; column++) {
+					if ((row & (0x80 >> column)) != 0) {
+						x = column * 64;
+						fprintf(stdout, "%d %d m 25\n", x, y);
+						fprintf(stdout, " %d %d l 25\n", x, y + 64);
+						fprintf(stdout, " %d %d l 25\n", x + 64, y + 64);
+						fprintf(stdout, " %d %d l 25\n", x + 64, y);
+						fprintf(stdout, " %d %d l 25\n", x, y);
+					}
+				}
+
+				y -= 64;
 			}
 		}
 	}

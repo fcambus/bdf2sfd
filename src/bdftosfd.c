@@ -29,6 +29,7 @@
 
 #include "compat.h"
 #include "config.h"
+#include "header.h"
 
 struct timespec begin, end, elapsed;
 

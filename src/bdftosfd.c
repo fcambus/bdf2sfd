@@ -4,7 +4,7 @@
  * https://github.com/fcambus/bdftosfd
  *
  * Created:      2019-11-21
- * Last Updated: 2019-12-14
+ * Last Updated: 2019-12-23
  *
  * bdftosfd is released under the BSD 2-Clause license
  * See LICENSE file for details
@@ -105,13 +105,25 @@ main(int argc, char *argv[]) {
 
 	bool readglyph = false;
 	char *token = NULL;
-	char *encoding;
+	char *charname, *encoding;
 
 	int32_t x, y;
 
 	while (fgets(lineBuffer, LINE_LENGTH_MAX, bdfFile)) {
 		if (*lineBuffer) {
 			if (!strncmp(lineBuffer, "STARTCHAR", 9)) {
+				fprintf(stdout, "StartChar:");
+				token = strtok(lineBuffer, " \t");
+
+				if (token) {
+					charname = strtok(NULL, " \n");
+
+					while (charname) {
+						fprintf(stdout, " %s", charname);
+						charname = strtok(NULL, " \n");
+					}
+				}
+
 				continue;
 			}
 
@@ -122,7 +134,7 @@ main(int argc, char *argv[]) {
 					encoding = strtok(NULL, " \n");
 
 				if (encoding)
-					fprintf(stdout, "Encoding: %s %s %s\n", encoding, encoding, encoding);
+					fprintf(stdout, "\nEncoding: %s %s %s\n", encoding, encoding, encoding);
 
 				continue;
 			}

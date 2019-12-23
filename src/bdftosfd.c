@@ -105,12 +105,24 @@ main(int argc, char *argv[]) {
 
 	bool readglyph = false;
 	char *token = NULL;
-	char *charname, *encoding;
+	char *chars, *charname, *encoding;
 
 	int32_t x, y;
 
 	while (fgets(lineBuffer, LINE_LENGTH_MAX, bdfFile)) {
 		if (*lineBuffer) {
+			if (!strncmp(lineBuffer, "CHARS ", 6)) {
+				token = strtok(lineBuffer, " \t");
+
+				if (token)
+					chars = strtok(NULL, " \n");
+
+				if (chars)
+					header(stdout, "Spleen", chars);
+
+				continue;
+			}
+
 			if (!strncmp(lineBuffer, "STARTCHAR", 9)) {
 				fprintf(stdout, "StartChar:");
 				token = strtok(lineBuffer, " \t");

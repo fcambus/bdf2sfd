@@ -27,8 +27,8 @@ header(FILE *stream, char *name, char *chars)
 	fprintf(stream, "Ascent: 768\n");
 	fprintf(stream, "Descent: 256\n");
 	fprintf(stream, "LayerCount: 2\n");
-	fprintf(stream, "Layer: 0 0 \"Back\" 1\n");
-	fprintf(stream, "Layer: 1 0 \"Fore\" 0\n");
+	fprintf(stream, "Layer: 0 0 \"Back\"  1\n");
+	fprintf(stream, "Layer: 1 0 \"Fore\"  0\n");
 	fprintf(stream, "FSType: 0\n");
 	fprintf(stream, "OS2Version: 0\n");
 	fprintf(stream, "OS2_WeightWidthSlopeOnly: 0\n");

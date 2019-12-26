@@ -13,6 +13,6 @@
 #ifndef HEADER_H
 #define HEADER_H
 
-void header(FILE *stream, char *name, char *chars);
+void header(FILE *, char *, char *);
 
 #endif /* HEADER_H */

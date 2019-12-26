@@ -48,7 +48,8 @@ uint64_t glyphes;
 double runtime;
 
 void
-displayUsage() {
+displayUsage()
+{
 	printf("USAGE: bdftosfd [options] inputfile\n\n" \
 	    "Options are:\n\n" \
 	    "	-h Display usage\n" \
@@ -56,7 +57,8 @@ displayUsage() {
 }
 
 int
-main(int argc, char *argv[]) {
+main(int argc, char *argv[])
+{
 	if (pledge("stdio rpath", NULL) == -1) {
 		err(EXIT_FAILURE, "pledge");
 	}

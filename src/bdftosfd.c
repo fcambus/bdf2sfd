@@ -4,7 +4,7 @@
  * https://github.com/fcambus/bdftosfd
  *
  * Created:      2019-11-21
- * Last Updated: 2019-12-23
+ * Last Updated: 2019-12-31
  *
  * bdftosfd is released under the BSD 2-Clause license
  * See LICENSE file for details
@@ -108,12 +108,21 @@ main(int argc, char *argv[])
 
 	bool readglyph = false;
 	char *token = NULL;
-	char *chars, *charname, *encoding;
+	char *chars, *charname, *copyright, *encoding;
 
 	int32_t x, y;
 
 	while (fgets(lineBuffer, LINE_LENGTH_MAX, bdfFile)) {
 		if (*lineBuffer) {
+			if (!strncmp(lineBuffer, "COPYRIGHT ", 10)) {
+				token = strtok(lineBuffer, " \t");
+
+				if (token)
+					copyright = strtok(NULL, "\n");
+
+				continue;
+			}
+
 			if (!strncmp(lineBuffer, "CHARS ", 6)) {
 				token = strtok(lineBuffer, " \t");
 

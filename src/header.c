@@ -34,7 +34,6 @@ header(FILE *stream, char *name, char *chars)
 	fprintf(stream, "OS2_WeightWidthSlopeOnly: 0\n");
 	fprintf(stream, "OS2_UseTypoMetrics: 0\n");
 	fprintf(stream, "CreationTime: 1575314000\n");
-	fprintf(stream, "ModificationTime: 1575314000\n");
 	fprintf(stream, "PfmFamily: 33\n");
 	fprintf(stream, "TTFWeight: 500\n");
 	fprintf(stream, "TTFWidth: 5\n");

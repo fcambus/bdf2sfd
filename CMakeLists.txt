@@ -1,10 +1,10 @@
 #
 # bdftosfd
-# Copyright (c) 2019, Frederic Cambus
+# Copyright (c) 2019-2020, Frederic Cambus
 # https://github.com/fcambus/bdftosfd
 #
 # Created:      2019-11-21
-# Last Updated: 2019-12-03
+# Last Updated: 2020-01-16
 #
 # bdftosfd is released under the BSD 2-Clause license
 # See LICENSE file for details

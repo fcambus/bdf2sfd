@@ -1,6 +1,6 @@
 /*
  * bdftosfd
- * Copyright (c) 2019, Frederic Cambus
+ * Copyright (c) 2019-2020, Frederic Cambus
  * https://github.com/fcambus/bdftosfd
  *
  * Created:      2019-11-21

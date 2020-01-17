@@ -4,17 +4,21 @@
  * https://github.com/fcambus/bdftosfd
  *
  * Created:      2019-11-21
- * Last Updated: 2019-12-23
+ * Last Updated: 2020-01-17
  *
  * bdftosfd is released under the BSD 2-Clause license
  * See LICENSE file for details
  */
 
+#include <sys/time.h>
 #include <stdio.h>
 
 void
 header(FILE *stream, char *name, char *chars)
 {
+	struct timeval tv;
+	gettimeofday(&tv, NULL);
+
 	fprintf(stream, "SplineFontDB: 3.0\n");
 	fprintf(stream, "FontName: %s\n", name);
 	fprintf(stream, "FullName: %s\n", name);
@@ -33,7 +37,7 @@ header(FILE *stream, char *name, char *chars)
 	fprintf(stream, "OS2Version: 0\n");
 	fprintf(stream, "OS2_WeightWidthSlopeOnly: 0\n");
 	fprintf(stream, "OS2_UseTypoMetrics: 0\n");
-	fprintf(stream, "CreationTime: 1575314000\n");
+	fprintf(stream, "CreationTime: %ld\n", tv.tv_sec);
 	fprintf(stream, "PfmFamily: 33\n");
 	fprintf(stream, "TTFWeight: 500\n");
 	fprintf(stream, "TTFWidth: 5\n");

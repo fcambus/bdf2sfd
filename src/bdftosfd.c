@@ -4,7 +4,7 @@
  * https://github.com/fcambus/bdftosfd
  *
  * Created:      2019-11-21
- * Last Updated: 2019-12-31
+ * Last Updated: 2020-01-20
  *
  * bdftosfd is released under the BSD 2-Clause license
  * See LICENSE file for details
@@ -122,7 +122,7 @@ main(int argc, char *argv[])
 				token = strtok(lineBuffer, " \t");
 
 				if (token)
-					font.copyright = strtok(NULL, "\n");
+					font.copyright = strdup(strtok(NULL, "\n"));
 
 				continue;
 			}

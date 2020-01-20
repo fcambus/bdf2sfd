@@ -149,6 +149,8 @@ main(int argc, char *argv[])
 
 				if (font.chars)
 					header(stdout, &font);
+				else
+					errx(EXIT_FAILURE, "Invalid value for CHARS.");
 
 				continue;
 			}

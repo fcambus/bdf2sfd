@@ -110,9 +110,10 @@ main(int argc, char *argv[])
 	char *token = NULL;
 	char *charname = NULL, *copyright = NULL, *name = NULL, *encoding = NULL;
 
-	struct fontinfo font;
-
 	int32_t x, y;
+
+	struct fontinfo font;
+	memset(&font, 0, sizeof(struct fontinfo));
 
 	while (fgets(lineBuffer, LINE_LENGTH_MAX, bdfFile)) {
 		if (*lineBuffer) {

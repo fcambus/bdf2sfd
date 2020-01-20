@@ -108,7 +108,7 @@ main(int argc, char *argv[])
 
 	bool readglyph = false;
 	char *token = NULL;
-	char *charname = NULL, *encoding = NULL;
+	char *charname = NULL, *copyright = NULL, *name = NULL, *encoding = NULL;
 
 	struct fontinfo font;
 
@@ -120,7 +120,10 @@ main(int argc, char *argv[])
 				token = strtok(lineBuffer, " \t");
 
 				if (token)
-					font.name = strdup(strtok(NULL, "\n"));
+					name = strtok(NULL, "\n");
+
+				if (name)
+					font.name = strdup(name);
 
 				continue;
 			}
@@ -129,7 +132,10 @@ main(int argc, char *argv[])
 				token = strtok(lineBuffer, " \t");
 
 				if (token)
-					font.copyright = strdup(strtok(NULL, "\n"));
+					copyright = strtok(NULL, "\n");
+
+				if (copyright)
+					font.copyright = strdup(copyright);
 
 				continue;
 			}

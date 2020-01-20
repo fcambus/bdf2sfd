@@ -13,16 +13,18 @@
 #include <sys/time.h>
 #include <stdio.h>
 
+#include "header.h"
+
 void
-header(FILE *stream, char *name, char *chars)
+header(FILE *stream, struct fontinfo *font)
 {
 	struct timeval tv;
 	gettimeofday(&tv, NULL);
 
 	fprintf(stream, "SplineFontDB: 3.0\n");
-	fprintf(stream, "FontName: %s\n", name);
-	fprintf(stream, "FullName: %s\n", name);
-	fprintf(stream, "FamilyName: %s\n", name);
+	fprintf(stream, "FontName: %s\n", font->name);
+	fprintf(stream, "FullName: %s\n", font->name);
+	fprintf(stream, "FamilyName: %s\n", font->name);
 	fprintf(stream, "Weight: Medium\n");
 	fprintf(stream, "Version: 1.5.0\n");
 	fprintf(stream, "ItalicAngle: 0\n");
@@ -65,5 +67,5 @@ header(FILE *stream, char *name, char *chars)
 	fprintf(stream, "FitToEm: 1\n");
 	fprintf(stream, "WinInfo: 64 16 4\n");
 	fprintf(stream, "TeXData: 1 0 0 346030 173015 115343 0 1048576 115343 783286 444596 497025 792723 393216 433062 380633 303038 157286 324010 404750 52429 2506097 1059062 262144\n");
-	fprintf(stream, "BeginChars: 65536 %s\n\n", chars);
+	fprintf(stream, "BeginChars: 65536 %s\n\n", font->chars);
 }

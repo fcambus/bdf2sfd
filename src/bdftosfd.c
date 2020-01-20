@@ -108,7 +108,11 @@ main(int argc, char *argv[])
 
 	bool readglyph = false;
 	char *token = NULL;
-	char *chars, *charname, *copyright, *encoding;
+	char *charname = NULL, *encoding = NULL;
+
+	struct fontinfo font;
+
+	font.name = "Spleen";
 
 	int32_t x, y;
 
@@ -118,7 +122,7 @@ main(int argc, char *argv[])
 				token = strtok(lineBuffer, " \t");
 
 				if (token)
-					copyright = strtok(NULL, "\n");
+					font.copyright = strtok(NULL, "\n");
 
 				continue;
 			}
@@ -127,10 +131,10 @@ main(int argc, char *argv[])
 				token = strtok(lineBuffer, " \t");
 
 				if (token)
-					chars = strtok(NULL, " \n");
+					font.chars = strtok(NULL, " \n");
 
-				if (chars)
-					header(stdout, "Spleen", chars);
+				if (font.chars)
+					header(stdout, &font);
 
 				continue;
 			}

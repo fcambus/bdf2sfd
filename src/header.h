@@ -13,6 +13,12 @@
 #ifndef HEADER_H
 #define HEADER_H
 
-void header(FILE *, char *, char *);
+struct fontinfo {
+	char *name;
+	char *chars;
+	char *copyright;
+};
+
+void header(FILE *, struct fontinfo *);
 
 #endif /* HEADER_H */

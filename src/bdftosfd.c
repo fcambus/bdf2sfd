@@ -112,12 +112,19 @@ main(int argc, char *argv[])
 
 	struct fontinfo font;
 
-	font.name = "Spleen";
-
 	int32_t x, y;
 
 	while (fgets(lineBuffer, LINE_LENGTH_MAX, bdfFile)) {
 		if (*lineBuffer) {
+			if (!strncmp(lineBuffer, "FAMILY_NAME ", 12)) {
+				token = strtok(lineBuffer, " \t");
+
+				if (token)
+					font.name = strdup(strtok(NULL, "\n"));
+
+				continue;
+			}
+
 			if (!strncmp(lineBuffer, "COPYRIGHT ", 10)) {
 				token = strtok(lineBuffer, " \t");
 

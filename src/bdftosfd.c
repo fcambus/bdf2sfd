@@ -108,7 +108,7 @@ main(int argc, char *argv[])
 
 	bool readglyph = false;
 	char *token = NULL;
-	char *charname = NULL, *copyright = NULL, *name = NULL, *encoding = NULL;
+	char *charname = NULL, *copyright = NULL, *name = NULL, *encoding = NULL, *version = NULL;
 
 	int32_t x, y;
 
@@ -137,6 +137,18 @@ main(int argc, char *argv[])
 
 				if (copyright)
 					font.copyright = strdup(copyright);
+
+				continue;
+			}
+
+			if (!strncmp(lineBuffer, "FONT_VERSION ", 13)) {
+				token = strtok(lineBuffer, " \t");
+
+				if (token)
+					version = strtok(NULL, "\n");
+
+				if (version)
+					font.version = strdup(version);
 
 				continue;
 			}

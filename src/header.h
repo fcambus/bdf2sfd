@@ -17,6 +17,7 @@ struct fontinfo {
 	char *name;
 	char *chars;
 	char *copyright;
+	char *version;
 };
 
 void header(FILE *, struct fontinfo *);

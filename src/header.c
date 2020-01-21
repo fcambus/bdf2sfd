@@ -27,7 +27,7 @@ header(FILE *stream, struct fontinfo *font)
 	fprintf(stream, "FamilyName: %s\n", font->name);
 	fprintf(stream, "Weight: Medium\n");
 	fprintf(stream, "Copyright: %s\n", font->copyright);
-	fprintf(stream, "Version: 1.5.0\n");
+	fprintf(stream, "Version: %s\n", font->version);
 	fprintf(stream, "ItalicAngle: 0\n");
 	fprintf(stream, "UnderlinePosition: -100\n");
 	fprintf(stream, "UnderlineWidth: 40\n");

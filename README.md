@@ -2,6 +2,10 @@
 
 bdftosfd is a [BDF][1] to [SFD][2] converter.
 
+This is a work in progress, and assumes input fonts are 8x16 for now. It
+was originally created to create OpenType versions of Spleen[3], and I'm
+curently working on making it a general purpose converter.
+
 ## Dependencies
 
 bdftosfd uses the `CMake` build system and does not requires any external
@@ -45,3 +49,4 @@ GitHub: https://github.com/fcambus/bdftosfd
 
 [1]: https://en.wikipedia.org/wiki/Glyph_Bitmap_Distribution_Format
 [2]: https://fontforge.org/en-US/documentation/developers/sfdformat/
+[3]: https://github.com/fcambus/spleen

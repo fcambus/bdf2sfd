@@ -31,8 +31,8 @@ header(FILE *stream, struct fontinfo *font)
 	fprintf(stream, "ItalicAngle: 0\n");
 	fprintf(stream, "UnderlinePosition: -100\n");
 	fprintf(stream, "UnderlineWidth: 40\n");
-	fprintf(stream, "Ascent: 768\n");
-	fprintf(stream, "Descent: 256\n");
+	fprintf(stream, "Ascent: %i\n", font->ascent);
+	fprintf(stream, "Descent: %i\n", font->descent);
 	fprintf(stream, "LayerCount: 2\n");
 	fprintf(stream, "Layer: 0 0 \"Back\"  1\n");
 	fprintf(stream, "Layer: 1 0 \"Fore\"  0\n");

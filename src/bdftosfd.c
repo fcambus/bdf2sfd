@@ -4,7 +4,7 @@
  * https://github.com/fcambus/bdftosfd
  *
  * Created:      2019-11-21
- * Last Updated: 2020-01-20
+ * Last Updated: 2020-01-21
  *
  * bdftosfd is released under the BSD 2-Clause license
  * See LICENSE file for details
@@ -110,6 +110,9 @@ main(int argc, char *argv[])
 	char *token = NULL;
 	char *charname = NULL, *copyright = NULL, *name = NULL, *encoding = NULL, *version = NULL;
 
+	char *value;
+	int32_t ascent, descent;
+
 	int32_t x, y;
 
 	struct fontinfo font;
@@ -137,6 +140,40 @@ main(int argc, char *argv[])
 
 				if (copyright)
 					font.copyright = strdup(copyright);
+
+				continue;
+			}
+
+			if (!strncmp(lineBuffer, "FONT_ASCENT ", 12)) {
+				token = strtok(lineBuffer, " \t");
+
+				if (token)
+					value = strtok(NULL, "\n");
+
+				if (value)
+					ascent = strtonum(value, 0, 16, &errstr);
+
+				if (!errstr)
+					font.ascent = ascent * 64;
+				else
+					errx(EXIT_FAILURE, "Invalid value for FONT_ASCENT.");
+
+				continue;
+			}
+
+			if (!strncmp(lineBuffer, "FONT_DESCENT ", 12)) {
+				token = strtok(lineBuffer, " \t");
+
+				if (token)
+					value = strtok(NULL, "\n");
+
+				if (value)
+					descent = strtonum(value, 0, 16, &errstr);
+
+				if (!errstr)
+					font.descent = descent * 64;
+				else
+					errx(EXIT_FAILURE, "Invalid value for FONT_DESCENT.");
 
 				continue;
 			}

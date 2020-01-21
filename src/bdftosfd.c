@@ -110,10 +110,10 @@ main(int argc, char *argv[])
 	char *token = NULL;
 	char *charname = NULL, *copyright = NULL, *name = NULL, *encoding = NULL, *version = NULL;
 
-	char *value;
-	int32_t ascent, descent;
+	char *value = NULL;
+	int32_t ascent = 0, descent = 0;
 
-	int32_t x, y;
+	int32_t x = 0, y = 0;
 
 	struct fontinfo font;
 	memset(&font, 0, sizeof(struct fontinfo));

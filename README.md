@@ -3,7 +3,7 @@
 bdftosfd is a [BDF][1] to [SFD][2] converter.
 
 This is a work in progress, and assumes input fonts are 8x16 for now. It
-was originally created to create OpenType versions of Spleen[3], and I'm
+was originally created to create OpenType versions of [Spleen][3], and I'm
 curently working on making it a general purpose converter.
 
 ## Dependencies

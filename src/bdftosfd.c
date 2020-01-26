@@ -111,6 +111,7 @@ main(int argc, char *argv[])
 	char *charname = NULL, *copyright = NULL, *name = NULL, *encoding = NULL, *version = NULL;
 
 	char *value = NULL;
+	int32_t height = 0, weight = 0;
 	int32_t ascent = 0, descent = 0;
 
 	int32_t x = 0, y = 0;
@@ -140,6 +141,29 @@ main(int argc, char *argv[])
 
 				if (copyright)
 					font.copyright = strdup(copyright);
+
+				continue;
+			}
+
+			if (!strncmp(lineBuffer, "FONTBOUNDINGBOX ", 16)) {
+				token = strtok(lineBuffer, " \t");
+
+				if (token)
+					value = strtok(NULL, " \t");
+
+				if (value)
+					weight = strtonum(value, 0, 8, &errstr);
+
+				if (errstr)
+					errx(EXIT_FAILURE, "Invalid value for FONTBOUNDINGBOX.");
+
+				value = strtok(NULL, " \t");
+
+				if (value)
+					height = strtonum(value, 0, 16, &errstr);
+
+				if (errstr)
+					errx(EXIT_FAILURE, "Invalid value for FONTBOUNDINGBOX.");
 
 				continue;
 			}

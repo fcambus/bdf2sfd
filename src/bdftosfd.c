@@ -4,7 +4,7 @@
  * https://github.com/fcambus/bdftosfd
  *
  * Created:      2019-11-21
- * Last Updated: 2020-01-22
+ * Last Updated: 2020-01-26
  *
  * bdftosfd is released under the BSD 2-Clause license
  * See LICENSE file for details
@@ -233,11 +233,11 @@ main(int argc, char *argv[])
 			}
 
 			if (!strncmp(lineBuffer, "BITMAP", 6)) {
-				fprintf(stdout, "Width: 512\n");
-				fprintf(stdout, "Flags: HW\n");
-				fprintf(stdout, "LayerCount: 2\n");
-				fprintf(stdout, "Fore\n");
-				fprintf(stdout, "SplineSet\n");
+				fprintf(stdout, "Width: 512\n"
+						"Flags: HW\n"
+						"LayerCount: 2\n"
+						"Fore\n"
+						"SplineSet\n");
 
 				y = 704;
 				readglyph = true;
@@ -247,8 +247,8 @@ main(int argc, char *argv[])
 			}
 
 			if (!strncmp(lineBuffer, "ENDCHAR", 7)) {
-				fprintf(stdout, "EndSplineSet\n");
-				fprintf(stdout, "EndChar\n\n");
+				fprintf(stdout, "EndSplineSet\n"
+						"EndChar\n\n");
 
 				readglyph = false;
 
@@ -274,8 +274,8 @@ main(int argc, char *argv[])
 		}
 	}
 
-	fprintf(stdout, "EndChars\n");
-	fprintf(stdout, "EndSplineFont\n");
+	fprintf(stdout, "EndChars\n"
+			"EndSplineFont\n");
 
 	/* Stopping timer */
 	clock_gettime(CLOCK_MONOTONIC, &end);

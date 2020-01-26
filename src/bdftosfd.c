@@ -114,7 +114,7 @@ main(int argc, char *argv[])
 	int32_t height = 0, weight = 0;
 	int32_t ascent = 0, descent = 0;
 
-	int32_t x = 0, y = 0;
+	int32_t x = 0, y = 0, mask = 0;
 
 	struct fontinfo font;
 	memset(&font, 0, sizeof(struct fontinfo));
@@ -164,6 +164,8 @@ main(int argc, char *argv[])
 
 				if (errstr)
 					errx(EXIT_FAILURE, "Invalid value for FONTBOUNDINGBOX.");
+
+				mask = 1 << (weight - 1);
 
 				continue;
 			}
@@ -283,7 +285,7 @@ main(int argc, char *argv[])
 				int32_t row = strtol(lineBuffer, NULL, 16);
 
 				for (size_t column = 0; column < 8; column++) {
-					if ((row & (0x80 >> column)) != 0) {
+					if ((row & (mask >> column)) != 0) {
 						x = column * 64;
 						fprintf(stdout, "%d %d m 25\n", x, y);
 						fprintf(stdout, " %d %d l 25\n", x, y + 64);

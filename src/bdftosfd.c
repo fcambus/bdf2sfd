@@ -115,6 +115,7 @@ main(int argc, char *argv[])
 	int32_t ascent = 0, descent = 0;
 
 	int32_t x = 0, y = 0, mask = 0;
+	int32_t xlength = 64, ylength = 64; /* Default values for 8x16 fonts */
 
 	struct fontinfo font;
 	memset(&font, 0, sizeof(struct fontinfo));
@@ -180,7 +181,7 @@ main(int argc, char *argv[])
 					ascent = strtonum(value, 0, 16, &errstr);
 
 				if (!errstr)
-					font.ascent = ascent * 64;
+					font.ascent = ascent * ylength;
 				else
 					errx(EXIT_FAILURE, "Invalid value for FONT_ASCENT.");
 
@@ -197,7 +198,7 @@ main(int argc, char *argv[])
 					descent = strtonum(value, 0, 16, &errstr);
 
 				if (!errstr)
-					font.descent = descent * 64;
+					font.descent = descent * ylength;
 				else
 					errx(EXIT_FAILURE, "Invalid value for FONT_DESCENT.");
 
@@ -286,16 +287,16 @@ main(int argc, char *argv[])
 
 				for (size_t column = 0; column < 8; column++) {
 					if ((row & (mask >> column)) != 0) {
-						x = column * 64;
+						x = column * xlength;
 						fprintf(stdout, "%d %d m 1\n", x, y);
-						fprintf(stdout, " %d %d l 1\n", x, y + 64);
-						fprintf(stdout, " %d %d l 1\n", x + 64, y + 64);
-						fprintf(stdout, " %d %d l 1\n", x + 64, y);
+						fprintf(stdout, " %d %d l 1\n", x, y + ylength);
+						fprintf(stdout, " %d %d l 1\n", x + xlength, y + ylength);
+						fprintf(stdout, " %d %d l 1\n", x + xlength, y);
 						fprintf(stdout, " %d %d l 1\n", x, y);
 					}
 				}
 
-				y -= 64;
+				y -= ylength;
 			}
 		}
 	}

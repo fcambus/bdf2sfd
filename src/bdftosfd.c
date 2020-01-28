@@ -153,7 +153,7 @@ main(int argc, char *argv[])
 					value = strtok(NULL, " \t");
 
 				if (value)
-					width = strtonum(value, 0, 8, &errstr);
+					width = strtonum(value, 0, 32, &errstr);
 
 				if (errstr)
 					errx(EXIT_FAILURE, "Invalid value for FONTBOUNDINGBOX.");
@@ -161,7 +161,7 @@ main(int argc, char *argv[])
 				value = strtok(NULL, " \t");
 
 				if (value)
-					height = strtonum(value, 0, 16, &errstr);
+					height = strtonum(value, 0, 64, &errstr);
 
 				if (errstr)
 					errx(EXIT_FAILURE, "Invalid value for FONTBOUNDINGBOX.");
@@ -178,7 +178,7 @@ main(int argc, char *argv[])
 					value = strtok(NULL, "\n");
 
 				if (value)
-					ascent = strtonum(value, 0, 16, &errstr);
+					ascent = strtonum(value, 0, 64, &errstr);
 
 				if (!errstr)
 					font.ascent = ascent * ylength;
@@ -195,7 +195,7 @@ main(int argc, char *argv[])
 					value = strtok(NULL, "\n");
 
 				if (value)
-					descent = strtonum(value, 0, 16, &errstr);
+					descent = strtonum(value, 0, 64, &errstr);
 
 				if (!errstr)
 					font.descent = descent * ylength;

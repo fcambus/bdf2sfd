@@ -285,7 +285,7 @@ main(int argc, char *argv[])
 			if (readglyph) {
 				int32_t row = strtol(lineBuffer, NULL, 16);
 
-				for (size_t column = 0; column < 8; column++) {
+				for (size_t column = 0; column < width; column++) {
 					if ((row & (mask >> column)) != 0) {
 						x = column * xlength;
 						fprintf(stdout, "%d %d m 1\n", x, y);

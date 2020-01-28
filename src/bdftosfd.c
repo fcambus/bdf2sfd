@@ -114,7 +114,8 @@ main(int argc, char *argv[])
 	int32_t height = 0, width = 0;
 	int32_t ascent = 0, descent = 0;
 
-	int32_t x = 0, y = 0, mask = 0;
+	int32_t x = 0, y = 0;
+	uint32_t mask = 0;
 	int32_t xlength = 64, ylength = 64; /* Default values for 8x16 fonts */
 
 	struct fontinfo font;
@@ -283,7 +284,7 @@ main(int argc, char *argv[])
 			}
 
 			if (readglyph) {
-				int32_t row = strtol(lineBuffer, NULL, 16);
+				uint32_t row = strtoul(lineBuffer, NULL, 16);
 
 				for (size_t column = 0; column < width; column++) {
 					if ((row & (mask >> column)) != 0) {

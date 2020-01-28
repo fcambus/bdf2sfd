@@ -111,7 +111,7 @@ main(int argc, char *argv[])
 	char *charname = NULL, *copyright = NULL, *name = NULL, *encoding = NULL, *version = NULL;
 
 	char *value = NULL;
-	int32_t height = 0, weight = 0;
+	int32_t height = 0, width = 0;
 	int32_t ascent = 0, descent = 0;
 
 	int32_t x = 0, y = 0, mask = 0;
@@ -153,7 +153,7 @@ main(int argc, char *argv[])
 					value = strtok(NULL, " \t");
 
 				if (value)
-					weight = strtonum(value, 0, 8, &errstr);
+					width = strtonum(value, 0, 8, &errstr);
 
 				if (errstr)
 					errx(EXIT_FAILURE, "Invalid value for FONTBOUNDINGBOX.");
@@ -166,7 +166,7 @@ main(int argc, char *argv[])
 				if (errstr)
 					errx(EXIT_FAILURE, "Invalid value for FONTBOUNDINGBOX.");
 
-				mask = 1 << (weight - 1);
+				mask = 1 << (width - 1);
 
 				continue;
 			}

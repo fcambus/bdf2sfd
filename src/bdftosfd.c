@@ -167,6 +167,12 @@ main(int argc, char *argv[])
 				if (errstr)
 					errx(EXIT_FAILURE, "Invalid value for FONTBOUNDINGBOX.");
 
+				if (!width || !height)
+					errx(EXIT_FAILURE, "Invalid value for FONTBOUNDINGBOX.");
+
+				xlength = 512 / width;
+				ylength = 1024 / height;
+
 				mask = 1 << (width - 1);
 
 				continue;

@@ -173,7 +173,7 @@ main(int argc, char *argv[])
 				xlength = 512 / width;
 				ylength = 1024 / height;
 
-				mask = 1 << (width - 1);
+				mask = 1 << (stride[width] * 8 - 1);
 
 				continue;
 			}

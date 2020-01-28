@@ -4,7 +4,7 @@
  * https://github.com/fcambus/bdftosfd
  *
  * Created:      2019-11-21
- * Last Updated: 2019-12-03
+ * Last Updated: 2020-01-28
  *
  * bdftosfd is released under the BSD 2-Clause license
  * See LICENSE file for details
@@ -17,6 +17,14 @@
 
 enum {
 	LINE_LENGTH_MAX = 65536
+};
+
+int stride[] = {
+	0,
+	1, 1, 1, 1, 1, 1, 1, 1,
+	2, 2, 2, 2, 2, 2, 2, 2,
+	3, 3, 3, 3, 3, 3, 3, 3,
+	4, 4, 4, 4, 4, 4, 4, 4
 };
 
 #endif /* CONFIG_H */

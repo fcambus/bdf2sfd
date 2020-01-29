@@ -59,6 +59,21 @@ displayUsage()
 int
 main(int argc, char *argv[])
 {
+	bool readglyph = false;
+	char *token = NULL;
+	char *charname = NULL, *copyright = NULL, *name = NULL, *encoding = NULL, *version = NULL;
+
+	char *value = NULL;
+	int32_t height = 0, width = 0;
+	int32_t ascent = 0, descent = 0;
+
+	int32_t x = 0, y = 0;
+	uint32_t mask = 0;
+	int32_t xlength = 64, ylength = 64; /* Default values for 8x16 fonts */
+
+	struct fontinfo font;
+	memset(&font, 0, sizeof(struct fontinfo));
+
 	if (pledge("stdio rpath", NULL) == -1) {
 		err(EXIT_FAILURE, "pledge");
 	}
@@ -106,20 +121,6 @@ main(int argc, char *argv[])
 		return EXIT_FAILURE;
 	}
 
-	bool readglyph = false;
-	char *token = NULL;
-	char *charname = NULL, *copyright = NULL, *name = NULL, *encoding = NULL, *version = NULL;
-
-	char *value = NULL;
-	int32_t height = 0, width = 0;
-	int32_t ascent = 0, descent = 0;
-
-	int32_t x = 0, y = 0;
-	uint32_t mask = 0;
-	int32_t xlength = 64, ylength = 64; /* Default values for 8x16 fonts */
-
-	struct fontinfo font;
-	memset(&font, 0, sizeof(struct fontinfo));
 
 	while (fgets(lineBuffer, LINE_LENGTH_MAX, bdfFile)) {
 		if (*lineBuffer) {

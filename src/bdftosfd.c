@@ -273,7 +273,7 @@ main(int argc, char *argv[])
 						"Fore\n"
 						"SplineSet\n");
 
-				y = ascent * ylength;
+				y = font.ascent;
 				readglyph = true;
 				glyphes++;
 

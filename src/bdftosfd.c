@@ -273,7 +273,7 @@ main(int argc, char *argv[])
 						"Fore\n"
 						"SplineSet\n");
 
-				y = (ascent - 1) * ylength;
+				y = ascent * ylength;
 				readglyph = true;
 				glyphes++;
 
@@ -296,8 +296,8 @@ main(int argc, char *argv[])
 					if ((row & (mask >> column)) != 0) {
 						x = column * xlength;
 						fprintf(stdout, "%d %d m 1\n", x, y);
-						fprintf(stdout, " %d %d l 1\n", x, y + ylength);
-						fprintf(stdout, " %d %d l 1\n", x + xlength, y + ylength);
+						fprintf(stdout, " %d %d l 1\n", x, y - ylength);
+						fprintf(stdout, " %d %d l 1\n", x + xlength, y - ylength);
 						fprintf(stdout, " %d %d l 1\n", x + xlength, y);
 						fprintf(stdout, " %d %d l 1\n", x, y);
 					}

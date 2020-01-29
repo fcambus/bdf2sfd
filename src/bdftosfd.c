@@ -78,8 +78,12 @@ main(int argc, char *argv[])
 		err(EXIT_FAILURE, "pledge");
 	}
 
-	while ((getoptFlag = getopt(argc, argv, "d:ghv")) != -1) {
+	while ((getoptFlag = getopt(argc, argv, "f:hv")) != -1) {
 		switch (getoptFlag) {
+		case 'f':
+			font.name = optarg;
+			break;
+
 		case 'h':
 			displayUsage();
 			return EXIT_SUCCESS;
@@ -124,7 +128,7 @@ main(int argc, char *argv[])
 
 	while (fgets(lineBuffer, LINE_LENGTH_MAX, bdfFile)) {
 		if (*lineBuffer) {
-			if (!strncmp(lineBuffer, "FAMILY_NAME ", 12)) {
+			if (!font.name && !strncmp(lineBuffer, "FAMILY_NAME ", 12)) {
 				token = strtok(lineBuffer, " \t");
 
 				if (token)

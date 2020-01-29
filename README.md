@@ -21,12 +21,13 @@ and Linux with both Clang and GCC.
 
 ## Usage
 
-	bdftosfd [-hv] file
+	bdftosfd [-hv] [-f name] file
 
 If file is a single dash (`-'), bdftosfd reads from the standard input.
 
 The options are as follows:
 
+	-f name	Specify font name.
 	-h	Display usage.
 	-v	Display version.
 

@@ -4,7 +4,7 @@
  * https://github.com/fcambus/bdftosfd
  *
  * Created:      2019-11-21
- * Last Updated: 2020-01-28
+ * Last Updated: 2020-01-29
  *
  * bdftosfd is released under the BSD 2-Clause license
  * See LICENSE file for details
@@ -273,7 +273,7 @@ main(int argc, char *argv[])
 						"Fore\n"
 						"SplineSet\n");
 
-				y = 704;
+				y = (ascent - 1) * ylength;
 				readglyph = true;
 				glyphes++;
 

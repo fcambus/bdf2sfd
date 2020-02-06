@@ -30,6 +30,7 @@
 #include "compat.h"
 #include "config.h"
 #include "header.h"
+#include "parse.h"
 
 struct timespec begin, end, elapsed;
 
@@ -67,6 +68,7 @@ main(int argc, char *argv[])
 	int32_t height = 0, width = 0;
 	int32_t ascent = 0, descent = 0;
 
+	int key;
 	int32_t x = 0, y = 0;
 	uint32_t mask = 0;
 	int32_t xlength = 64, ylength = 64; /* Default values for 8x16 fonts */
@@ -125,10 +127,15 @@ main(int argc, char *argv[])
 		return EXIT_FAILURE;
 	}
 
-
 	while (fgets(lineBuffer, LINE_LENGTH_MAX, bdfFile)) {
-		if (*lineBuffer) {
-			if (!font.name && !strncmp(lineBuffer, "FAMILY_NAME ", 12)) {
+		if (!*lineBuffer)
+			continue;
+
+		key = parseLine(lineBuffer);
+
+		switch(key) {
+		case FAMILY_NAME:
+			if (!font.name) {
 				token = strtok(lineBuffer, " \t");
 
 				if (token)
@@ -137,22 +144,22 @@ main(int argc, char *argv[])
 				if (name)
 					font.name = strdup(name);
 
-				continue;
 			}
 
-			if (!strncmp(lineBuffer, "COPYRIGHT ", 10)) {
-				token = strtok(lineBuffer, " \t");
+			continue;
 
-				if (token)
-					copyright = strtok(NULL, "\n");
+		case COPYRIGHT:
+			token = strtok(lineBuffer, " \t");
 
-				if (copyright)
-					font.copyright = strdup(copyright);
+			if (token)
+				copyright = strtok(NULL, "\n");
 
-				continue;
-			}
+			if (copyright)
+				font.copyright = strdup(copyright);
 
-			if (!strncmp(lineBuffer, "FONTBOUNDINGBOX ", 16)) {
+			continue;
+
+		case FONTBOUNDINGBOX:
 				token = strtok(lineBuffer, " \t");
 
 				if (token)
@@ -181,140 +188,130 @@ main(int argc, char *argv[])
 				mask = 1 << (stride[width] * 8 - 1);
 
 				continue;
-			}
 
-			if (!strncmp(lineBuffer, "FONT_ASCENT ", 12)) {
-				token = strtok(lineBuffer, " \t");
+		case FONT_ASCENT:
+			token = strtok(lineBuffer, " \t");
 
-				if (token)
-					value = strtok(NULL, "\n");
+			if (token)
+				value = strtok(NULL, "\n");
 
-				if (value)
-					ascent = strtonum(value, 0, 64, &errstr);
+			if (value)
+				ascent = strtonum(value, 0, 64, &errstr);
 
-				if (!errstr)
-					font.ascent = ascent * ylength;
-				else
-					errx(EXIT_FAILURE, "Invalid value for FONT_ASCENT.");
+			if (!errstr)
+				font.ascent = ascent * ylength;
+			else
+				errx(EXIT_FAILURE, "Invalid value for FONT_ASCENT.");
 
-				continue;
-			}
+			continue;
 
-			if (!strncmp(lineBuffer, "FONT_DESCENT ", 12)) {
-				token = strtok(lineBuffer, " \t");
+		case FONT_DESCENT:
+			token = strtok(lineBuffer, " \t");
 
-				if (token)
-					value = strtok(NULL, "\n");
+			if (token)
+				value = strtok(NULL, "\n");
 
-				if (value)
-					descent = strtonum(value, 0, 64, &errstr);
+			if (value)
+				descent = strtonum(value, 0, 64, &errstr);
 
-				if (!errstr)
-					font.descent = descent * ylength;
-				else
-					errx(EXIT_FAILURE, "Invalid value for FONT_DESCENT.");
+			if (!errstr)
+				font.descent = descent * ylength;
+			else
+				errx(EXIT_FAILURE, "Invalid value for FONT_DESCENT.");
 
-				continue;
-			}
+			continue;
 
-			if (!strncmp(lineBuffer, "FONT_VERSION ", 13)) {
-				token = strtok(lineBuffer, " \t");
+		case FONT_VERSION:
+			token = strtok(lineBuffer, " \t");
 
-				if (token)
-					version = strtok(NULL, "\n");
+			if (token)
+				version = strtok(NULL, "\n");
 
-				if (version)
-					font.version = strdup(version);
+			if (version)
+				font.version = strdup(version);
 
-				continue;
-			}
+			continue;
 
-			if (!strncmp(lineBuffer, "CHARS ", 6)) {
-				token = strtok(lineBuffer, " \t");
+		case CHARS:
+			token = strtok(lineBuffer, " \t");
 
-				if (token)
-					font.chars = strtok(NULL, " \n");
+			if (token)
+				font.chars = strtok(NULL, " \n");
 
-				if (font.chars)
-					header(stdout, &font);
-				else
-					errx(EXIT_FAILURE, "Invalid value for CHARS.");
+			if (font.chars)
+				header(stdout, &font);
+			else
+				errx(EXIT_FAILURE, "Invalid value for CHARS.");
 
-				continue;
-			}
+			continue;
 
-			if (!strncmp(lineBuffer, "STARTCHAR", 9)) {
-				fprintf(stdout, "StartChar:");
-				token = strtok(lineBuffer, " \t");
+		case STARTCHAR:
+			fprintf(stdout, "StartChar:");
+			token = strtok(lineBuffer, " \t");
 
-				if (token) {
+			if (token) {
+				charname = strtok(NULL, " \n");
+
+				while (charname) {
+					fprintf(stdout, " %s", charname);
 					charname = strtok(NULL, " \n");
-
-					while (charname) {
-						fprintf(stdout, " %s", charname);
-						charname = strtok(NULL, " \n");
-					}
 				}
-
-				continue;
 			}
 
-			if (!strncmp(lineBuffer, "ENCODING", 8)) {
-				token = strtok(lineBuffer, " \t");
+			continue;
 
-				if (token)
-					encoding = strtok(NULL, " \n");
+		case ENCODING:
+			token = strtok(lineBuffer, " \t");
 
-				if (encoding)
-					fprintf(stdout, "\nEncoding: %s %s %s\n", encoding, encoding, encoding);
+			if (token)
+				encoding = strtok(NULL, " \n");
 
-				continue;
-			}
+			if (encoding)
+				fprintf(stdout, "\nEncoding: %s %s %s\n", encoding, encoding, encoding);
 
-			if (!strncmp(lineBuffer, "BITMAP", 6)) {
-				fprintf(stdout, "Width: 512\n"
-						"Flags: HW\n"
-						"LayerCount: 2\n"
-						"Fore\n"
-						"SplineSet\n");
+			continue;
 
-				y = font.ascent;
-				readglyph = true;
-				glyphes++;
+		case BITMAP:
+			fprintf(stdout, "Width: 512\n"
+					"Flags: HW\n"
+					"LayerCount: 2\n"
+					"Fore\n"
+					"SplineSet\n");
 
-				continue;
-			}
+			y = font.ascent;
+			readglyph = true;
+			glyphes++;
 
-			if (!strncmp(lineBuffer, "ENDCHAR", 7)) {
-				fprintf(stdout, "EndSplineSet\n"
-						"EndChar\n\n");
+			continue;
 
-				readglyph = false;
+		case ENDCHAR:
+			fprintf(stdout, "EndSplineSet\n"
+					"EndChar\n\n");
 
-				continue;
-			}
+			readglyph = false;
+			continue;
+		}
 
-			if (readglyph) {
-				uint32_t row = strtoul(lineBuffer, NULL, 16);
+		if (readglyph) {
+			uint32_t row = strtoul(lineBuffer, NULL, 16);
 
-				for (size_t column = 0; column < width; column++) {
-					if ((row & (mask >> column)) != 0) {
-						x = column * xlength;
-						fprintf(stdout, "%d %d m 1\n"
-								" %d %d l 1\n"
-								" %d %d l 1\n"
-								" %d %d l 1\n"
-								" %d %d l 1\n",
-								x, y,
-								x, y - ylength,
-								x + xlength, y - ylength,
-								x + xlength, y,
-								x, y);
-					}
+			for (size_t column = 0; column < width; column++) {
+				if ((row & (mask >> column)) != 0) {
+					x = column * xlength;
+					fprintf(stdout, "%d %d m 1\n"
+							" %d %d l 1\n"
+							" %d %d l 1\n"
+							" %d %d l 1\n"
+							" %d %d l 1\n",
+							x, y,
+							x, y - ylength,
+							x + xlength, y - ylength,
+							x + xlength, y,
+							x, y);
 				}
-
-				y -= ylength;
 			}
+
+			y -= ylength;
 		}
 	}
 

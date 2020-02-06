@@ -4,7 +4,7 @@
 # https://github.com/fcambus/bdftosfd
 #
 # Created:      2019-11-21
-# Last Updated: 2020-01-16
+# Last Updated: 2020-02-06
 #
 # bdftosfd is released under the BSD 2-Clause license
 # See LICENSE file for details
@@ -26,7 +26,7 @@ check_function_exists(strtonum HAVE_STRTONUM)
 include_directories("compat")
 
 set(CMAKE_BUILD_TYPE Release)
-set(SRC src/bdftosfd.c src/header.c)
+set(SRC src/bdftosfd.c src/header.c src/parse.c)
 
 if(NOT HAVE_PLEDGE)
   set (SRC ${SRC} compat/pledge.c)

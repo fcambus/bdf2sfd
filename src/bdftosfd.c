@@ -62,10 +62,9 @@ int
 main(int argc, char *argv[])
 {
 	bool readglyph = false;
-	char *token = NULL;
-	char *charname = NULL, *copyright = NULL, *name = NULL, *encoding = NULL, *version = NULL;
 
 	char *value = NULL;
+
 	int32_t height = 0, width = 0;
 	int32_t ascent = 0, descent = 0;
 
@@ -137,19 +136,19 @@ main(int argc, char *argv[])
 		switch(key) {
 		case FAMILY_NAME:
 			if (!font.name) {
-				name = strtok(NULL, "\n");
+				value = strtok(NULL, "\n");
 
-				if (name)
-					font.name = strdup(name);
+				if (value)
+					font.name = strdup(value);
 			}
 
 			continue;
 
 		case COPYRIGHT:
-			copyright = strtok(NULL, "\n");
+			value = strtok(NULL, "\n");
 
-			if (copyright)
-				font.copyright = strdup(copyright);
+			if (value)
+				font.copyright = strdup(value);
 
 			continue;
 
@@ -207,10 +206,10 @@ main(int argc, char *argv[])
 			continue;
 
 		case FONT_VERSION:
-			version = strtok(NULL, "\n");
+			value = strtok(NULL, "\n");
 
-			if (version)
-				font.version = strdup(version);
+			if (value)
+				font.version = strdup(value);
 
 			continue;
 
@@ -227,20 +226,20 @@ main(int argc, char *argv[])
 		case STARTCHAR:
 			fprintf(stdout, "StartChar:");
 
-			charname = strtok(NULL, "\n");
+			value = strtok(NULL, "\n");
 
-			while (charname) {
-				fprintf(stdout, " %s\n", charname);
-				charname = strtok(NULL, " \n");
+			while (value) {
+				fprintf(stdout, " %s\n", value);
+				value = strtok(NULL, " \n");
 			}
 
 			continue;
 
 		case ENCODING:
-			encoding = strtok(NULL, " \n");
+			value = strtok(NULL, " \n");
 
-			if (encoding)
-				fprintf(stdout, "\nEncoding: %s %s %s\n", encoding, encoding, encoding);
+			if (value)
+				fprintf(stdout, "\nEncoding: %s %s %s\n", value, value, value);
 
 			continue;
 

@@ -4,7 +4,7 @@
  * https://github.com/fcambus/bdftosfd
  *
  * Created:      2019-11-21
- * Last Updated: 2020-01-29
+ * Last Updated: 2020-02-06
  *
  * bdftosfd is released under the BSD 2-Clause license
  * See LICENSE file for details
@@ -300,11 +300,16 @@ main(int argc, char *argv[])
 				for (size_t column = 0; column < width; column++) {
 					if ((row & (mask >> column)) != 0) {
 						x = column * xlength;
-						fprintf(stdout, "%d %d m 1\n", x, y);
-						fprintf(stdout, " %d %d l 1\n", x, y - ylength);
-						fprintf(stdout, " %d %d l 1\n", x + xlength, y - ylength);
-						fprintf(stdout, " %d %d l 1\n", x + xlength, y);
-						fprintf(stdout, " %d %d l 1\n", x, y);
+						fprintf(stdout, "%d %d m 1\n"
+								" %d %d l 1\n"
+								" %d %d l 1\n"
+								" %d %d l 1\n"
+								" %d %d l 1\n",
+								x, y,
+								x, y - ylength,
+								x + xlength, y - ylength,
+								x + xlength, y,
+								x, y);
 					}
 				}
 

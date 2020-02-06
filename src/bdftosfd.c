@@ -154,31 +154,31 @@ main(int argc, char *argv[])
 			continue;
 
 		case FONTBOUNDINGBOX:
-				value = strtok(NULL, " \t");
+			value = strtok(NULL, " \t");
 
-				if (value)
-					width = strtonum(value, 0, 32, &errstr);
+			if (value)
+				width = strtonum(value, 0, 32, &errstr);
 
-				if (errstr)
-					errx(EXIT_FAILURE, "Invalid value for FONTBOUNDINGBOX.");
+			if (errstr)
+				errx(EXIT_FAILURE, "Invalid value for FONTBOUNDINGBOX.");
 
-				value = strtok(NULL, " \t");
+			value = strtok(NULL, " \t");
 
-				if (value)
-					height = strtonum(value, 0, 64, &errstr);
+			if (value)
+				height = strtonum(value, 0, 64, &errstr);
 
-				if (errstr)
-					errx(EXIT_FAILURE, "Invalid value for FONTBOUNDINGBOX.");
+			if (errstr)
+				errx(EXIT_FAILURE, "Invalid value for FONTBOUNDINGBOX.");
 
-				if (!width || !height)
-					errx(EXIT_FAILURE, "Invalid value for FONTBOUNDINGBOX.");
+			if (!width || !height)
+				errx(EXIT_FAILURE, "Invalid value for FONTBOUNDINGBOX.");
 
-				xlength = 512 / width;
-				ylength = 1024 / height;
+			xlength = 512 / width;
+			ylength = 1024 / height;
 
-				mask = 1 << (stride[width] * 8 - 1);
+			mask = 1 << (stride[width] * 8 - 1);
 
-				continue;
+			continue;
 
 		case FONT_ASCENT:
 			value = strtok(NULL, "\n");
@@ -227,12 +227,12 @@ main(int argc, char *argv[])
 		case STARTCHAR:
 			fprintf(stdout, "StartChar:");
 
-				charname = strtok(NULL, "\n");
+			charname = strtok(NULL, "\n");
 
-				while (charname) {
-					fprintf(stdout, " %s\n", charname);
-					charname = strtok(NULL, " \n");
-				}
+			while (charname) {
+				fprintf(stdout, " %s\n", charname);
+				charname = strtok(NULL, " \n");
+			}
 
 			continue;
 

@@ -14,7 +14,7 @@
 #include <stdio.h>
 
 void
-polygon(uint32_t row, uint32_t mask, int32_t width, int32_t x, int32_t y, int32_t xlength, int32_t ylength) {
+polygon(uint32_t row, uint32_t mask, uint32_t width, int32_t x, int32_t y, uint32_t xlength, uint32_t ylength) {
 	for (size_t column = 0; column < width; column++) {
 		if ((row & (mask >> column)) != 0) {
 			x = column * xlength;

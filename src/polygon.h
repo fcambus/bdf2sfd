@@ -13,6 +13,6 @@
 #ifndef POLYGON_H
 #define POLYGON_H
 
-void polygon(uint32_t, uint32_t, int32_t, int32_t, int32_t, int32_t, int32_t);
+void polygon(uint32_t, uint32_t, uint32_t, int32_t, int32_t, uint32_t, uint32_t);
 
 #endif /* POLYGON_H */

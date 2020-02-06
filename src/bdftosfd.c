@@ -31,6 +31,7 @@
 #include "config.h"
 #include "header.h"
 #include "parse.h"
+#include "polygon.h"
 
 struct timespec begin, end, elapsed;
 
@@ -295,22 +296,8 @@ main(int argc, char *argv[])
 		if (readglyph) {
 			uint32_t row = strtoul(lineBuffer, NULL, 16);
 
-			for (size_t column = 0; column < width; column++) {
-				if ((row & (mask >> column)) != 0) {
-					x = column * xlength;
-					fprintf(stdout, "%d %d m 1\n"
-							" %d %d l 1\n"
-							" %d %d l 1\n"
-							" %d %d l 1\n"
-							" %d %d l 1\n",
-							x, y,
-							x, y - ylength,
-							x + xlength, y - ylength,
-							x + xlength, y,
-							x, y);
-				}
-			}
-
+			polygon(row, mask, width, x, y, xlength, ylength);
+			
 			y -= ylength;
 		}
 	}

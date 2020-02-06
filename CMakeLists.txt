@@ -26,7 +26,7 @@ check_function_exists(strtonum HAVE_STRTONUM)
 include_directories("compat")
 
 set(CMAKE_BUILD_TYPE Release)
-set(SRC src/bdftosfd.c src/header.c src/parse.c)
+set(SRC src/bdftosfd.c src/header.c src/parse.c src/polygon.c)
 
 if(NOT HAVE_PLEDGE)
   set (SRC ${SRC} compat/pledge.c)

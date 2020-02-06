@@ -11,43 +11,50 @@
  */
 
 #include <string.h>
+#include <string.h>
 #include "parse.h"
 
 int
 parseLine(char *lineBuffer) {
+	char *key = NULL;
+
 	if (*lineBuffer) {
-		if (!strncmp(lineBuffer, "FAMILY_NAME ", 12))
-			return FAMILY_NAME;
+		key = strtok(lineBuffer, " \t\n");
 
-		if (!strncmp(lineBuffer, "COPYRIGHT ", 10))
-			return COPYRIGHT;
+		if (key) {
+			if (!strcmp(key, "FAMILY_NAME"))
+				return FAMILY_NAME;
 
-		if (!strncmp(lineBuffer, "FONTBOUNDINGBOX ", 16))
-			return FONTBOUNDINGBOX;
+			if (!strcmp(key, "COPYRIGHT"))
+				return COPYRIGHT;
 
-		if (!strncmp(lineBuffer, "FONT_ASCENT ", 12))
-			return FONT_ASCENT;
+			if (!strcmp(key, "FONTBOUNDINGBOX"))
+				return FONTBOUNDINGBOX;
 
-		if (!strncmp(lineBuffer, "FONT_DESCENT ", 12))
-			return FONT_DESCENT;
+			if (!strcmp(key, "FONT_ASCENT"))
+				return FONT_ASCENT;
 
-		if (!strncmp(lineBuffer, "FONT_VERSION ", 13))
-			return FONT_VERSION;
+			if (!strcmp(key, "FONT_DESCENT"))
+				return FONT_DESCENT;
 
-		if (!strncmp(lineBuffer, "CHARS ", 6))
-			return CHARS;
+			if (!strcmp(key, "FONT_VERSION"))
+				return FONT_VERSION;
 
-		if (!strncmp(lineBuffer, "STARTCHAR", 9))
-			return STARTCHAR;
+			if (!strcmp(key, "CHARS"))
+				return CHARS;
 
-		if (!strncmp(lineBuffer, "ENCODING", 8))
-			return ENCODING;
+			if (!strcmp(key, "STARTCHAR"))
+				return STARTCHAR;
 
-		if (!strncmp(lineBuffer, "BITMAP", 6))
-			return BITMAP;
+			if (!strcmp(key, "ENCODING"))
+				return ENCODING;
 
-		if (!strncmp(lineBuffer, "ENDCHAR", 7))
-			return ENDCHAR;
+			if (!strcmp(key, "BITMAP"))
+				return BITMAP;
+
+			if (!strcmp(key, "ENDCHAR"))
+				return ENDCHAR;
+		}
 	}
 
 	return 0;

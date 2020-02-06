@@ -137,23 +137,16 @@ main(int argc, char *argv[])
 		switch(key) {
 		case FAMILY_NAME:
 			if (!font.name) {
-				token = strtok(lineBuffer, " \t");
-
-				if (token)
-					name = strtok(NULL, "\n");
+				name = strtok(NULL, "\n");
 
 				if (name)
 					font.name = strdup(name);
-
 			}
 
 			continue;
 
 		case COPYRIGHT:
-			token = strtok(lineBuffer, " \t");
-
-			if (token)
-				copyright = strtok(NULL, "\n");
+			copyright = strtok(NULL, "\n");
 
 			if (copyright)
 				font.copyright = strdup(copyright);
@@ -161,10 +154,7 @@ main(int argc, char *argv[])
 			continue;
 
 		case FONTBOUNDINGBOX:
-				token = strtok(lineBuffer, " \t");
-
-				if (token)
-					value = strtok(NULL, " \t");
+				value = strtok(NULL, " \t");
 
 				if (value)
 					width = strtonum(value, 0, 32, &errstr);
@@ -191,10 +181,7 @@ main(int argc, char *argv[])
 				continue;
 
 		case FONT_ASCENT:
-			token = strtok(lineBuffer, " \t");
-
-			if (token)
-				value = strtok(NULL, "\n");
+			value = strtok(NULL, "\n");
 
 			if (value)
 				ascent = strtonum(value, 0, 64, &errstr);
@@ -207,10 +194,7 @@ main(int argc, char *argv[])
 			continue;
 
 		case FONT_DESCENT:
-			token = strtok(lineBuffer, " \t");
-
-			if (token)
-				value = strtok(NULL, "\n");
+			value = strtok(NULL, "\n");
 
 			if (value)
 				descent = strtonum(value, 0, 64, &errstr);
@@ -223,10 +207,7 @@ main(int argc, char *argv[])
 			continue;
 
 		case FONT_VERSION:
-			token = strtok(lineBuffer, " \t");
-
-			if (token)
-				version = strtok(NULL, "\n");
+			version = strtok(NULL, "\n");
 
 			if (version)
 				font.version = strdup(version);
@@ -234,10 +215,7 @@ main(int argc, char *argv[])
 			continue;
 
 		case CHARS:
-			token = strtok(lineBuffer, " \t");
-
-			if (token)
-				font.chars = strtok(NULL, " \n");
+			font.chars = strtok(NULL, " \n");
 
 			if (font.chars)
 				header(stdout, &font);
@@ -248,24 +226,18 @@ main(int argc, char *argv[])
 
 		case STARTCHAR:
 			fprintf(stdout, "StartChar:");
-			token = strtok(lineBuffer, " \t");
 
-			if (token) {
-				charname = strtok(NULL, " \n");
+				charname = strtok(NULL, "\n");
 
 				while (charname) {
-					fprintf(stdout, " %s", charname);
+					fprintf(stdout, " %s\n", charname);
 					charname = strtok(NULL, " \n");
 				}
-			}
 
 			continue;
 
 		case ENCODING:
-			token = strtok(lineBuffer, " \t");
-
-			if (token)
-				encoding = strtok(NULL, " \n");
+			encoding = strtok(NULL, " \n");
 
 			if (encoding)
 				fprintf(stdout, "\nEncoding: %s %s %s\n", encoding, encoding, encoding);

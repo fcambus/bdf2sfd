@@ -4,7 +4,7 @@
  * https://github.com/fcambus/bdf2sfd
  *
  * Created:      2019-11-21
- * Last Updated: 2020-02-06
+ * Last Updated: 2020-02-07
  *
  * bdf2sfd is released under the BSD 2-Clause license
  * See LICENSE file for details
@@ -69,9 +69,9 @@ main(int argc, char *argv[])
 	uint32_t ascent = 0, descent = 0;
 
 	int key;
-	int32_t x = 0, y = 0;
+	float x = 0.0, y = 0.0;
 	uint32_t mask = 0;
-	uint32_t xlength = 64, ylength = 64; /* Default values for 8x16 fonts */
+	float xlength = 64.0, ylength = 64.0; /* Default values for 8x16 fonts */
 
 	struct fontinfo font;
 	memset(&font, 0, sizeof(struct fontinfo));
@@ -172,8 +172,8 @@ main(int argc, char *argv[])
 			if (!width || !height)
 				errx(EXIT_FAILURE, "Invalid value for FONTBOUNDINGBOX.");
 
-			xlength = 512 / width;
-			ylength = 1024 / height;
+			xlength = 512.0 / width;
+			ylength = 1024.0 / height;
 
 			mask = 1 << (stride[width] * 8 - 1);
 

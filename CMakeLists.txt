@@ -1,18 +1,18 @@
 #
-# bdftosfd
+# bdf2sfd
 # Copyright (c) 2019-2020, Frederic Cambus
-# https://github.com/fcambus/bdftosfd
+# https://github.com/fcambus/bdf2sfd
 #
 # Created:      2019-11-21
 # Last Updated: 2020-02-06
 #
-# bdftosfd is released under the BSD 2-Clause license
+# bdf2sfd is released under the BSD 2-Clause license
 # See LICENSE file for details
 #
 
 cmake_minimum_required (VERSION 2.6)
 
-project(bdftosfd C)
+project(bdf2sfd C)
 
 include(CheckFunctionExists)
 include(GNUInstallDirs)
@@ -26,7 +26,7 @@ check_function_exists(strtonum HAVE_STRTONUM)
 include_directories("compat")
 
 set(CMAKE_BUILD_TYPE Release)
-set(SRC src/bdftosfd.c src/header.c src/parse.c src/polygon.c)
+set(SRC src/bdf2sfd.c src/header.c src/parse.c src/polygon.c)
 
 if(NOT HAVE_PLEDGE)
   set (SRC ${SRC} compat/pledge.c)
@@ -37,10 +37,10 @@ if(NOT HAVE_STRTONUM)
 endif()
 
 add_definitions(-Wall -Wextra -std=c99 -pedantic)
-add_executable(bdftosfd ${SRC})
+add_executable(bdf2sfd ${SRC})
 
-install(TARGETS bdftosfd DESTINATION ${CMAKE_INSTALL_BINDIR})
-install(FILES bdftosfd.1 DESTINATION ${CMAKE_INSTALL_MANDIR}/man1/)
+install(TARGETS bdf2sfd DESTINATION ${CMAKE_INSTALL_BINDIR})
+install(FILES bdf2sfd.1 DESTINATION ${CMAKE_INSTALL_MANDIR}/man1/)
 
 enable_testing()
-add_test(bdftosfd bdftosfd)
+add_test(bdf2sfd bdf2sfd)

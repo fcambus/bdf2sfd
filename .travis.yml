@@ -24,13 +24,13 @@ script: cmake . && make
 
 env:
   global:
-    # travis encrypt -r fcambus/bdftosfd encrypt COVERITY_SCAN_TOKEN=token
+    # travis encrypt -r fcambus/bdf2sfd encrypt COVERITY_SCAN_TOKEN=token
     - secure: "CTz2UoYRBV1Jj+yrwwh+uuj6Ip1BaVwjefvJ4RfJdfCy6KTa7D9IXOmo7w0EPfyPkmemB8T9z17OzyT7r/+9/kupBGxFU7sPuPytn0Cq7AJ1W7Thag0b+yxhjq3ZxVwQrj4rBHtqQ6GTXXiTYWlBx2ZpbeDdEm8NY0R9Cdvcs0MCOElG4r/6FHUePQ+deNtlDCb+7hL5Bc8E34nnamKht3z0gtQ+OGpQ6qkTH42anYIhebHlW9tQv7oWqN8U2/B4HgvOPjSAIVNuaMJCy2AUsD+Ux0Ks6qJgDwvIl6eGVM/BBJi44dUUcBzW8uRxlueg+xqtIF0hasMxD7TKZaw03EypDWMKva9wresfRB6PnUpOawwSiskVTgXoa/d/YHU39BFRp8EUpDqPEanqhOqh598uQ8wjCsnX7KR8kegW5a3EjlnDgZb76O8q24irNa24rty2rV9GNAuUEmAZycaJCC27DFBcLcRQKgAc+hJPFAeF4CH8NhB4vOHJI9MXhxHqRNPd01yej2JC85ZC6+xbkGYqk/iiydkU6f5iYsx77RQKkiQM/1o9W1aN/yc156B3iZil3urlIvMSTcqO/w7DX0mLBSajGdTSWl4no8UuScl+rE/i1olgwwcj2kI/i00JfQMnjdqyWM7+ARdTT9i1DEXrQN31i6CfK8nRkYmV3uM="
 
 addons:
   coverity_scan:
     project:
-      name: "fcambus/bdftosfd"
+      name: "fcambus/bdf2sfd"
       version: 1.0.0
       description: "BDF to SFD converter"
     notification_email: fred@statdns.com

@@ -1,19 +1,19 @@
 /*
- * bdftosfd
+ * bdf2sfd
  * Copyright (c) 2019-2020, Frederic Cambus
- * https://github.com/fcambus/bdftosfd
+ * https://github.com/fcambus/bdf2sfd
  *
  * Created:      2019-11-21
  * Last Updated: 2020-01-28
  *
- * bdftosfd is released under the BSD 2-Clause license
+ * bdf2sfd is released under the BSD 2-Clause license
  * See LICENSE file for details
  */
 
 #ifndef CONFIG_H
 #define CONFIG_H
 
-#define VERSION "bdftosfd 1.0.0"
+#define VERSION "bdf2sfd 1.0.0"
 
 enum {
 	LINE_LENGTH_MAX = 65536

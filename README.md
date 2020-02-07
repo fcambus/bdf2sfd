@@ -5,9 +5,11 @@ fonts. It works by converting each pixel of a glyph to a polygon, which
 produces large and unoptimized SFD files which should be post-processed
 using [FontForge][3].
 
-This is a work in progress, and assumes input fonts are 8x16 for now. It
-was originally created to create OpenType versions of [Spleen][4], and I'm
-curently working on making it a general purpose converter.
+It was originally created to create OpenType versions of [Spleen][4], and
+is released in the hope it can be useful to convert other fonts as well.
+Please be aware that it works best on fonts proportional to 8x16. Other
+sizes will work but the aspect ratio will not be preserved. There is
+currently little interest in addressing the issue.
 
 ## Dependencies
 
@@ -38,7 +40,30 @@ bdf2sfd outputs SFD data to **stdout**.
 
 ### Post-processing
 
+The SFD files created by bdf2sfd should be post-processed with FontForge
+in order to remove overlap and simplify shapes.
+
+This can be done as follow:
+
+```
+fontforge -lang ff -c 'Open("spleen.sfd"); SelectAll(); RemoveOverlap(); Simplify(-1, 1); Save("spleen.sfd")'
+```
+
 ### Producing OTF and TTF fonts
+
+After post-processing, OpenType and/or TrueType fonts can be produced as follow:
+
+For OTF fonts:
+
+```
+fontforge -lang ff -c 'Open("spleen.sfd"); Generate("spleen.otf")'
+```
+
+For TTF fonts:
+
+```
+fontforge -lang ff -c 'Open("spleen.sfd"); Generate("spleen.ttf")'
+```
 
 ## License
 

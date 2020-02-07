@@ -225,14 +225,10 @@ main(int argc, char *argv[])
 			continue;
 
 		case STARTCHAR:
-			fprintf(stdout, "StartChar:");
-
 			value = strtok(NULL, "\n");
 
-			while (value) {
-				fprintf(stdout, " %s\n", value);
-				value = strtok(NULL, " \n");
-			}
+			if (value)
+				fprintf(stdout, "StartChar: %s", value);
 
 			continue;
 

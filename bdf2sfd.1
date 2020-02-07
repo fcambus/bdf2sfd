@@ -37,7 +37,9 @@
 .Ar file
 .Sh DESCRIPTION
 .Nm
-is a BDF to SFD converter.
+is a BDF to SFD converter, allowing to vectorize bitmap fonts. It works by
+converting each pixel of a glyph to a polygon, which produces large and
+unoptimized SFD files which should be post-processed using FontForge.
 .Pp
 If
 .Ar file
@@ -46,7 +48,7 @@ is a single dash (`-'),
 reads from the standard input.
 .Pp
 The options are as follows:
-.Bl -tag -width Ds
+.Bl -tag -width 10n
 .It Fl f Ar name
 Specify font name.
 .It Fl h

@@ -52,10 +52,11 @@ double runtime;
 void
 displayUsage()
 {
-	printf("USAGE: bdf2sfd [options] inputfile\n\n" \
-	    "Options are:\n\n" \
-	    "	-h Display usage\n" \
-	    "	-v Display version\n");
+	printf("bdf2sfd [-hv] [-f name] file \n\n"
+	    "The options are as follows:\n\n"
+	    "     -f name     Specify font name.\n"
+	    "     -h          Display usage.\n"
+	    "     -v          Display version.\n");
 }
 
 int

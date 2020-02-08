@@ -2,10 +2,10 @@
 
 bdf2sfd is a [BDF][1] to [SFD][2] converter, allowing to vectorize bitmap
 fonts. It works by converting each pixel of a glyph to a polygon, which
-produces large and unoptimized SFD files which should be post-processed
+produces large and unoptimized SFD files that should be post-processed
 using [FontForge][3].
 
-It was originally created to create OpenType versions of [Spleen][4], and
+It was originally created to generate OpenType versions of [Spleen][4], and
 is released in the hope it can be useful to convert other fonts as well.
 Please be aware that it works best on fonts proportional to 8x16. Other
 sizes will work but the aspect ratio will not be preserved. There is

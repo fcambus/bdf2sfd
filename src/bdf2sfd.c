@@ -4,7 +4,7 @@
  * https://github.com/fcambus/bdf2sfd
  *
  * Created:      2019-11-21
- * Last Updated: 2020-02-07
+ * Last Updated: 2020-02-08
  *
  * bdf2sfd is released under the BSD 2-Clause license
  * See LICENSE file for details
@@ -136,20 +136,28 @@ main(int argc, char *argv[])
 
 		switch(key) {
 		case FAMILY_NAME:
-			if (!font.name) {
-				value = strtok(NULL, "\n");
+		case COPYRIGHT:
+		case FONT_ASCENT:
+		case FONT_DESCENT:
+		case FONT_VERSION:
+		case CHARS:
+		case STARTCHAR:
+		case ENCODING:
+			value = strtok(NULL, "\n");
 
-				if (value)
-					font.name = strdup(value);
-			}
+			if (!value)
+				continue;
+		}
+
+		switch(key) {
+		case FAMILY_NAME:
+			if (!font.name)
+				font.name = strdup(value);
 
 			continue;
 
 		case COPYRIGHT:
-			value = strtok(NULL, "\n");
-
-			if (value)
-				font.copyright = strdup(value);
+			font.copyright = strdup(value);
 
 			continue;
 
@@ -181,10 +189,7 @@ main(int argc, char *argv[])
 			continue;
 
 		case FONT_ASCENT:
-			value = strtok(NULL, "\n");
-
-			if (value)
-				ascent = strtonum(value, 0, 64, &errstr);
+			ascent = strtonum(value, 0, 64, &errstr);
 
 			if (!errstr)
 				font.ascent = ascent * ylength;
@@ -194,10 +199,7 @@ main(int argc, char *argv[])
 			continue;
 
 		case FONT_DESCENT:
-			value = strtok(NULL, "\n");
-
-			if (value)
-				descent = strtonum(value, 0, 64, &errstr);
+			descent = strtonum(value, 0, 64, &errstr);
 
 			if (!errstr)
 				font.descent = descent * ylength;
@@ -207,15 +209,12 @@ main(int argc, char *argv[])
 			continue;
 
 		case FONT_VERSION:
-			value = strtok(NULL, "\n");
-
-			if (value)
-				font.version = strdup(value);
+			font.version = strdup(value);
 
 			continue;
 
 		case CHARS:
-			font.chars = strtok(NULL, " \n");
+			font.chars = value;
 
 			if (font.chars)
 				header(stdout, &font);
@@ -225,18 +224,12 @@ main(int argc, char *argv[])
 			continue;
 
 		case STARTCHAR:
-			value = strtok(NULL, "\n");
-
-			if (value)
-				fprintf(stdout, "StartChar: %s", value);
+			fprintf(stdout, "StartChar: %s", value);
 
 			continue;
 
 		case ENCODING:
-			value = strtok(NULL, " \n");
-
-			if (value)
-				fprintf(stdout, "\nEncoding: %s %s %s\n", value, value, value);
+			fprintf(stdout, "\nEncoding: %s %s %s\n", value, value, value);
 
 			continue;
 

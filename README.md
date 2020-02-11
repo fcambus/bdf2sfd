@@ -5,6 +5,11 @@ fonts. It works by converting each pixel of a glyph to a polygon, which
 produces large and unoptimized SFD files that should be post-processed
 using [FontForge][3].
 
+There are several reasons why it might be desirable to convert bitmap
+fonts to OpenType or TrueType versions. This allow for example to use them
+as Web fonts, or simply to keep using them in some terminal emulators,
+since Pango 1.44 dropped support for bitmap fonts.
+
 It was originally created to generate OpenType versions of [Spleen][4], and
 is released in the hope it can be useful to convert other fonts as well.
 Please be aware that it works best on fonts proportional to 8x16. Other
@@ -23,6 +28,12 @@ dependencies.
 
 bdf2sfd has been successfully built and tested on OpenBSD, NetBSD, FreeBSD,
 and Linux with both Clang and GCC.
+
+## Packages
+
+Packages are available for the following operating systems:
+
+- [OpenBSD][5]
 
 ## Usage
 
@@ -84,3 +95,4 @@ GitHub: https://github.com/fcambus/bdf2sfd
 [2]: https://fontforge.org/en-US/documentation/developers/sfdformat/
 [3]: https://fontforge.org
 [4]: https://github.com/fcambus/spleen
+[5]: https://cvsweb.openbsd.org/cgi-bin/cvsweb/ports/converters/bdf2sfd

@@ -1,3 +1,9 @@
+bdf2sfd 1.1.0 (2020-02-12)
+
+- Add a '-p' switch to allow specifying the PostScript font name
+
+
+
 bdf2sfd 1.0.0 (2020-02-08)
 
 - Initial release

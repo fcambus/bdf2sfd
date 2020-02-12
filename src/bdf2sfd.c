@@ -159,6 +159,9 @@ main(int argc, char *argv[])
 			if (!font.name)
 				font.name = strdup(value);
 
+			if (!font.psname)
+				font.psname = strdup(value);
+
 			continue;
 
 		case COPYRIGHT:

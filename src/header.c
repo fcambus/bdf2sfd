@@ -4,7 +4,7 @@
  * https://github.com/fcambus/bdf2sfd
  *
  * Created:      2019-11-21
- * Last Updated: 2020-02-08
+ * Last Updated: 2020-02-12
  *
  * bdf2sfd is released under the BSD 2-Clause license
  * See LICENSE file for details
@@ -22,7 +22,7 @@ header(FILE *stream, struct fontinfo *font)
 	gettimeofday(&tv, NULL);
 
 	fprintf(stream, "SplineFontDB: 3.0\n");
-	fprintf(stream, "FontName: %s\n", font->name);
+	fprintf(stream, "FontName: %s\n", font->psname);
 	fprintf(stream, "FullName: %s\n", font->name);
 	fprintf(stream, "FamilyName: %s\n", font->name);
 	fprintf(stream, "Weight: Medium\n");

@@ -4,7 +4,7 @@
  * https://github.com/fcambus/bdf2sfd
  *
  * Created:      2019-11-21
- * Last Updated: 2020-02-08
+ * Last Updated: 2020-02-12
  *
  * bdf2sfd is released under the BSD 2-Clause license
  * See LICENSE file for details
@@ -52,9 +52,10 @@ double runtime;
 void
 displayUsage()
 {
-	printf("bdf2sfd [-hv] [-f name] file \n\n"
+	printf("bdf2sfd [-hv] [-f name] [-p name] file \n\n"
 	    "The options are as follows:\n\n"
 	    "     -f name     Specify font name.\n"
+	    "     -p name     Specify PostScript font name.\n"
 	    "     -h          Display usage.\n"
 	    "     -v          Display version.\n");
 }
@@ -81,10 +82,14 @@ main(int argc, char *argv[])
 		err(EXIT_FAILURE, "pledge");
 	}
 
-	while ((getoptFlag = getopt(argc, argv, "f:hv")) != -1) {
+	while ((getoptFlag = getopt(argc, argv, "f:p:hv")) != -1) {
 		switch (getoptFlag) {
 		case 'f':
 			font.name = optarg;
+			break;
+
+		case 'p':
+			font.psname = optarg;
 			break;
 
 		case 'h':

@@ -37,13 +37,14 @@ Packages are available for the following operating systems:
 
 ## Usage
 
-	bdf2sfd [-hv] [-f name] file
+	bdf2sfd [-hv] [-f name] [-p name] file
 
 If file is a single dash (`-'), bdf2sfd reads from the standard input.
 
 The options are as follows:
 
 	-f name	Specify font name.
+	-p name	Specify PostScript font name.
 	-h	Display usage.
 	-v	Display version.
 

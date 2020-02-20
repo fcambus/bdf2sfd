@@ -286,5 +286,10 @@ main(int argc, char *argv[])
 	/* Clean up */
 	fclose(bdfFile);
 
+	free(font.name);
+	free(font.psname);
+	free(font.copyright);
+	free(font.version);
+
 	return EXIT_SUCCESS;
 }

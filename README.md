@@ -34,6 +34,8 @@ and Linux with both Clang and GCC.
 Packages are available for the following operating systems:
 
 - [OpenBSD][5]
+- [NetBSD][6]
+- [Void Linux][7]
 
 ## Usage
 
@@ -97,3 +99,5 @@ GitHub: https://github.com/fcambus/bdf2sfd
 [3]: https://fontforge.org
 [4]: https://github.com/fcambus/spleen
 [5]: https://cvsweb.openbsd.org/cgi-bin/cvsweb/ports/converters/bdf2sfd
+[6]: https://pkgsrc.se/converters/bdf2sfd
+[7]: https://github.com/void-linux/void-packages/tree/master/srcpkgs/bdf2sfd

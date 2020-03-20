@@ -4,7 +4,7 @@
  * https://github.com/fcambus/bdf2sfd
  *
  * Created:      2019-11-21
- * Last Updated: 2020-02-12
+ * Last Updated: 2020-03-20
  *
  * bdf2sfd is released under the BSD 2-Clause license
  * See LICENSE file for details
@@ -285,11 +285,6 @@ main(int argc, char *argv[])
 
 	/* Clean up */
 	fclose(bdfFile);
-
-	free(font.name);
-	free(font.psname);
-	free(font.copyright);
-	free(font.version);
 
 	return EXIT_SUCCESS;
 }

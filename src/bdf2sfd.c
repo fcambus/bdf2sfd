@@ -70,7 +70,7 @@ main(int argc, char *argv[])
 	uint32_t height = 0, width = 0;
 	uint32_t ascent = 0, descent = 0;
 
-	int key;
+	int key, stride;
 	float x = 0.0, y = 0.0;
 	uint32_t mask = 0;
 	float xlength = 64.0, ylength = 64.0; /* Default values for 8x16 fonts */
@@ -192,7 +192,8 @@ main(int argc, char *argv[])
 			xlength = 512.0 / width;
 			ylength = 1024.0 / height;
 
-			mask = 1 << (stride[width] * 8 - 1);
+			stride = (width + 7) / 8;
+			mask = 1 << (stride * 8 - 1);
 
 			continue;
 

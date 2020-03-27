@@ -4,7 +4,7 @@
  * https://github.com/fcambus/bdf2sfd
  *
  * Created:      2019-11-21
- * Last Updated: 2020-03-20
+ * Last Updated: 2020-03-27
  *
  * bdf2sfd is released under the BSD 2-Clause license
  * See LICENSE file for details
@@ -58,6 +58,12 @@ displayUsage()
 	    "     -p name     Specify PostScript font name.\n"
 	    "     -h          Display usage.\n"
 	    "     -v          Display version.\n");
+}
+
+void
+error(const char *str)
+{
+	errx(EXIT_FAILURE, "%s", str);
 }
 
 int
@@ -176,7 +182,7 @@ main(int argc, char *argv[])
 				width = strtonum(value, 0, 32, &errstr);
 
 			if (errstr)
-				errx(EXIT_FAILURE, "Invalid value for FONTBOUNDINGBOX.");
+				error("Invalid value for FONTBOUNDINGBOX.");
 
 			value = strtok(NULL, " \t");
 
@@ -184,10 +190,10 @@ main(int argc, char *argv[])
 				height = strtonum(value, 0, 64, &errstr);
 
 			if (errstr)
-				errx(EXIT_FAILURE, "Invalid value for FONTBOUNDINGBOX.");
+				error("Invalid value for FONTBOUNDINGBOX.");
 
 			if (!width || !height)
-				errx(EXIT_FAILURE, "Invalid value for FONTBOUNDINGBOX.");
+				error("Invalid value for FONTBOUNDINGBOX.");
 
 			xlength = 512.0 / width;
 			ylength = 1024.0 / height;
@@ -203,7 +209,7 @@ main(int argc, char *argv[])
 			if (!errstr)
 				font.ascent = ascent * ylength;
 			else
-				errx(EXIT_FAILURE, "Invalid value for FONT_ASCENT.");
+				error("Invalid value for FONT_ASCENT.");
 
 			continue;
 
@@ -213,7 +219,7 @@ main(int argc, char *argv[])
 			if (!errstr)
 				font.descent = descent * ylength;
 			else
-				errx(EXIT_FAILURE, "Invalid value for FONT_DESCENT.");
+				error( "Invalid value for FONT_DESCENT.");
 
 			continue;
 
@@ -228,7 +234,7 @@ main(int argc, char *argv[])
 			if (font.chars)
 				header(stdout, &font);
 			else
-				errx(EXIT_FAILURE, "Invalid value for CHARS.");
+				error("Invalid value for CHARS.");
 
 			continue;
 

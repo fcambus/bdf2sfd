@@ -1,3 +1,13 @@
+bdf2sfd 1.1.1 (2020-03-30)
+
+- Free a bunch of allocations on exit, to appease LSan
+- Add links to NetBSD and Void Linux packages
+- Drop the stride array, and calculate stride directly
+- Add an error() function to wrap errx() calls
+- Add tests for different BDF sizes, using stripped down versions of Spleen
+
+
+
 bdf2sfd 1.1.0 (2020-02-12)
 
 - Add a '-p' switch to allow specifying the PostScript font name

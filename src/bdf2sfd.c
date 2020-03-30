@@ -73,13 +73,14 @@ main(int argc, char *argv[])
 
 	char *value = NULL;
 
+	int key, stride;
+
+	float x = 0.0, y = 0.0;
+	float xlength = 64.0, ylength = 64.0; /* Default for 8x16 fonts */
+
 	uint32_t height = 0, width = 0;
 	uint32_t ascent = 0, descent = 0;
-
-	int key, stride;
-	float x = 0.0, y = 0.0;
 	uint32_t mask = 0;
-	float xlength = 64.0, ylength = 64.0; /* Default values for 8x16 fonts */
 
 	struct fontinfo font;
 	memset(&font, 0, sizeof(struct fontinfo));

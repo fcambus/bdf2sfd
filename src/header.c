@@ -4,7 +4,7 @@
  * https://github.com/fcambus/bdf2sfd
  *
  * Created:      2019-11-21
- * Last Updated: 2020-02-12
+ * Last Updated: 2020-03-30
  *
  * bdf2sfd is released under the BSD 2-Clause license
  * See LICENSE file for details
@@ -72,6 +72,9 @@ header(FILE *stream, struct fontinfo *font)
 	fprintf(stream, "AntiAlias: 0\n");
 	fprintf(stream, "FitToEm: 1\n");
 	fprintf(stream, "WinInfo: 64 16 4\n");
-	fprintf(stream, "TeXData: 1 0 0 346030 173015 115343 0 1048576 115343 783286 444596 497025 792723 393216 433062 380633 303038 157286 324010 404750 52429 2506097 1059062 262144\n");
+	fprintf(stream, "TeXData: 1 0 0 346030 173015 115343 0 1048576 115343 "
+			"783286 444596 497025 792723 393216 433062 380633 "
+			"303038 157286 324010 404750 52429 2506097 1059062 "
+			"262144\n");
 	fprintf(stream, "BeginChars: 65536 %s\n\n", font->chars);
 }

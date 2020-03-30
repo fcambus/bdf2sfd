@@ -245,7 +245,8 @@ main(int argc, char *argv[])
 			continue;
 
 		case ENCODING:
-			fprintf(stdout, "\nEncoding: %s %s %s\n", value, value, value);
+			fprintf(stdout, "\nEncoding: %s %s %s\n",
+			    value, value, value);
 
 			continue;
 
@@ -289,7 +290,8 @@ main(int argc, char *argv[])
 	runtime = elapsed.tv_sec + elapsed.tv_nsec / 1E9;
 
 	/* Printing results */
-	fprintf(stderr, "Processed %" PRIu64 " glyphes in %f seconds.\n", glyphes, runtime);
+	fprintf(stderr, "Processed %" PRIu64 " glyphes in %f seconds.\n",
+	    glyphes, runtime);
 
 	/* Clean up */
 	fclose(bdfFile);

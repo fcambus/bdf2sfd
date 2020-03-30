@@ -1,5 +1,5 @@
 /*
- * bdf2sfd 1.1.0
+ * bdf2sfd 1.1.1
  * Copyright (c) 2019-2020, Frederic Cambus
  * https://github.com/fcambus/bdf2sfd
  *
@@ -13,7 +13,7 @@
 #ifndef CONFIG_H
 #define CONFIG_H
 
-#define VERSION "bdf2sfd 1.1.0"
+#define VERSION "bdf2sfd 1.1.1"
 
 enum {
 	LINE_LENGTH_MAX = 65536

@@ -70,6 +70,7 @@ int
 main(int argc, char *argv[])
 {
 	bool readglyph = false;
+	bool name_allocated = false, psname_allocated = false;
 
 	char *value = NULL;
 
@@ -163,11 +164,15 @@ main(int argc, char *argv[])
 
 		switch(key) {
 		case FAMILY_NAME:
-			if (!font.name)
+			if (!font.name) {
 				font.name = strdup(value);
+				name_allocated = true;
+			}
 
-			if (!font.psname)
+			if (!font.psname) {
 				font.psname = strdup(value);
+				psname_allocated = true;
+			}
 
 			continue;
 
@@ -295,6 +300,12 @@ main(int argc, char *argv[])
 
 	/* Clean up */
 	fclose(bdfFile);
+
+	if (name_allocated)
+		free(font.name);
+
+	if (psname_allocated)
+		free(font.psname);
 
 	free(font.copyright);
 	free(font.version);

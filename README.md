@@ -37,6 +37,7 @@ Packages are available for the following operating systems:
 - [NetBSD][6]
 - [Void Linux][7]
 - [Debian][8]
+- [Ubuntu][9]
 
 ## Usage
 
@@ -103,3 +104,4 @@ GitHub: https://github.com/fcambus/bdf2sfd
 [6]: https://pkgsrc.se/converters/bdf2sfd
 [7]: https://github.com/void-linux/void-packages/tree/master/srcpkgs/bdf2sfd
 [8]: https://packages.debian.org/search?keywords=bdf2sfd
+[9]: https://packages.ubuntu.com/bdf2sfd

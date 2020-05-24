@@ -47,7 +47,6 @@ int8_t getoptFlag;
 char *intputFile;
 
 uint64_t glyphes;
-double runtime;
 
 void
 displayUsage()
@@ -292,11 +291,10 @@ main(int argc, char *argv[])
 	clock_gettime(CLOCK_MONOTONIC, &end);
 
 	timespecsub(&end, &begin, &elapsed);
-	runtime = elapsed.tv_sec + elapsed.tv_nsec / 1E9;
 
 	/* Printing results */
 	fprintf(stderr, "Processed %" PRIu64 " glyphes in %f seconds.\n",
-	    glyphes, runtime);
+	    glyphes, elapsed.tv_sec + elapsed.tv_nsec / 1E9);
 
 	/* Clean up */
 	fclose(bdfFile);

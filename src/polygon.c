@@ -10,7 +10,7 @@
  * See LICENSE file for details
  */
 
-#include <inttypes.h>
+#include <stdint.h>
 #include <stdio.h>
 
 void

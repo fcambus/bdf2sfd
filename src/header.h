@@ -13,7 +13,7 @@
 #ifndef HEADER_H
 #define HEADER_H
 
-#include <inttypes.h>
+#include <stdint.h>
 #include <stdio.h>
 
 struct fontinfo {

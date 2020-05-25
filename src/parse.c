@@ -11,7 +11,6 @@
  */
 
 #include <string.h>
-#include <string.h>
 #include "parse.h"
 
 int

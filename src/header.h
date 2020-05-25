@@ -14,6 +14,7 @@
 #define HEADER_H
 
 #include <inttypes.h>
+#include <stdio.h>
 
 struct fontinfo {
 	char *name;

@@ -36,7 +36,7 @@ if(NOT HAVE_STRTONUM)
   set (SRC ${SRC} compat/strtonum.c)
 endif()
 
-add_definitions(-Wall -Wextra -std=c99 -pedantic)
+add_definitions(-D_GNU_SOURCE -Wall -Wextra -std=c99 -pedantic)
 add_executable(bdf2sfd ${SRC})
 
 install(TARGETS bdf2sfd DESTINATION ${CMAKE_INSTALL_BINDIR})

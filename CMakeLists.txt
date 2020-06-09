@@ -4,7 +4,7 @@
 # https://github.com/fcambus/bdf2sfd
 #
 # Created:      2019-11-21
-# Last Updated: 2020-03-30
+# Last Updated: 2020-06-09
 #
 # bdf2sfd is released under the BSD 2-Clause license
 # See LICENSE file for details
@@ -32,7 +32,7 @@ if(ENABLE_SECCOMP)
   find_path(SECCOMP NAMES "linux/seccomp.h")
   if(SECCOMP)
     message(STATUS "Looking for seccomp - found")
-    add_definitions(-DHAVE_SECCOMP=1)
+    add_definitions(-DHAVE_SECCOMP)
   else()
     message(STATUS "Looking for seccomp - not found")
   endif()

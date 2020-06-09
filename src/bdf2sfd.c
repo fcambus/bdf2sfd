@@ -23,6 +23,15 @@
 #include <string.h>
 #include <time.h>
 
+#ifdef HAVE_SECCOMP
+#include <sys/prctl.h>
+#include <sys/syscall.h>
+#include <linux/audit.h>
+#include <linux/filter.h>
+#include <linux/seccomp.h>
+#include "seccomp.h"
+#endif
+
 #include "compat.h"
 #include "config.h"
 #include "header.h"
@@ -84,6 +93,18 @@ main(int argc, char *argv[])
 	if (pledge("stdio rpath", NULL) == -1) {
 		err(EXIT_FAILURE, "pledge");
 	}
+
+#ifdef HAVE_SECCOMP
+	if (prctl(PR_SET_NO_NEW_PRIVS, 1, 0, 0, 0)) {
+		perror("Can't initialize seccomp");
+		return EXIT_FAILURE;
+	}
+
+	if (prctl(PR_SET_SECCOMP, SECCOMP_MODE_FILTER, &bdf2sfd)) {
+		perror("Can't load seccomp filter");
+		return EXIT_FAILURE;
+	}
+#endif
 
 	while ((getoptFlag = getopt(argc, argv, "f:p:hv")) != -1) {
 		switch (getoptFlag) {

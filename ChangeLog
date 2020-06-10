@@ -1,3 +1,16 @@
+bdf2sfd 1.1.2 (2020-06-10)
+
+- Use CLOCK_REALTIME if CLOCK_MONOTONIC is not available
+- Get rid of the runtime variable, it is only used once
+- Remove duplicate <string.h> include
+- Add missing <stdio.h> include
+- Add <stdint.h> include instead of <inttypes.h>
+- Define _GNU_SOURCE in CMakeLists.txt to avoid cluttering source files
+- Add ENABLE_SECCOMP build option, to allow building seccomp support
+- Add initial seccomp support to BDF2SFD
+
+
+
 bdf2sfd 1.1.1 (2020-03-30)
 
 - Free a bunch of allocations on exit, to appease LSan

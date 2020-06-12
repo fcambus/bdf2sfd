@@ -4,7 +4,7 @@
  * https://github.com/fcambus/bdf2sfd
  *
  * Created:      2019-11-21
- * Last Updated: 2020-06-09
+ * Last Updated: 2020-06-12
  *
  * bdf2sfd is released under the BSD 2-Clause license
  * See LICENSE file for details
@@ -25,9 +25,6 @@
 
 #ifdef HAVE_SECCOMP
 #include <sys/prctl.h>
-#include <sys/syscall.h>
-#include <linux/audit.h>
-#include <linux/filter.h>
 #include <linux/seccomp.h>
 #include "seccomp.h"
 #endif

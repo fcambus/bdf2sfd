@@ -4,7 +4,7 @@
  * https://github.com/fcambus/bdf2sfd
  *
  * Created:      2019-11-21
- * Last Updated: 2020-06-24
+ * Last Updated: 2020-06-25
  *
  * bdf2sfd is released under the BSD 2-Clause license
  * See LICENSE file for details
@@ -49,12 +49,12 @@ static struct sock_filter filter[] = {
 	BDF2SFD_SYSCALL_ALLOW(close),
 	BDF2SFD_SYSCALL_ALLOW(exit_group),
 	BDF2SFD_SYSCALL_ALLOW(fstat),
-#if defined(SYS_fstat64)
+#if defined(__NR_fstat64)
 	BDF2SFD_SYSCALL_ALLOW(fstat64),		/* i386 glibc */
 #endif
 	BDF2SFD_SYSCALL_ALLOW(gettimeofday),	/* i386 glibc */
 	BDF2SFD_SYSCALL_ALLOW(ioctl),
-#if defined(SYS_open)
+#if defined(__NR_open)
 	BDF2SFD_SYSCALL_ALLOW(open),
 #endif
 	BDF2SFD_SYSCALL_ALLOW(openat),

@@ -16,6 +16,12 @@ Please be aware that it works best on fonts proportional to 8x16. Other
 sizes will work but the aspect ratio will not be preserved. There is
 currently little interest in addressing the issue.
 
+bdf2sfd is written with security in mind and is running sandboxed on OpenBSD
+(using pledge). Experimental seccomp support is available for selected
+architectures and can be enabled by setting the `ENABLE_SECCOMP` variable
+to `1` when invoking CMake. It has also been extensively fuzzed using AFL
+and Honggfuzz.
+
 ## Dependencies
 
 bdf2sfd uses the `CMake` build system and does not requires any external

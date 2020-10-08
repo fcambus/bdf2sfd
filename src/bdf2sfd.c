@@ -50,7 +50,7 @@ char *intputFile;
 
 uint64_t glyphes;
 
-void
+static void
 displayUsage()
 {
 	printf("bdf2sfd [-hv] [-f name] [-p name] file \n\n"
@@ -61,7 +61,7 @@ displayUsage()
 	    "     -v          Display version.\n");
 }
 
-void
+static void
 error(const char *str)
 {
 	errx(EXIT_FAILURE, "%s", str);

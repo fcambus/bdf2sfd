@@ -4,7 +4,7 @@
  * https://github.com/fcambus/bdf2sfd
  *
  * Created:      2019-11-21
- * Last Updated: 2020-03-20
+ * Last Updated: 2020-10-08
  *
  * bdf2sfd is released under the BSD 2-Clause license
  * See LICENSE file for details
@@ -15,8 +15,6 @@
 
 #define VERSION "bdf2sfd 1.1.3"
 
-enum {
-	LINE_LENGTH_MAX = 65536
-};
+#define LINE_LENGTH_MAX 65536
 
 #endif /* CONFIG_H */

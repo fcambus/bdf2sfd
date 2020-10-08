@@ -1,3 +1,13 @@
+bdf2sfd 1.1.4 (2020-10-08)
+
+- Add support for seccomp on arm
+- Update error message to use seccomp architecture names
+- Add a note in the README about sandboxing and fuzzing
+- Make displayUsage() and error() static
+- Reduce amount of fprintf() calls when outputting SFD header
+
+
+
 bdf2sfd 1.1.3 (2020-07-12)
 
 - Remove some unneeded seccomp related includes

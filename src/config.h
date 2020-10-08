@@ -1,5 +1,5 @@
 /*
- * bdf2sfd 1.1.3
+ * bdf2sfd 1.1.4
  * Copyright (c) 2019-2020, Frederic Cambus
  * https://github.com/fcambus/bdf2sfd
  *
@@ -13,7 +13,7 @@
 #ifndef CONFIG_H
 #define CONFIG_H
 
-#define VERSION "bdf2sfd 1.1.3"
+#define VERSION "bdf2sfd 1.1.4"
 
 #define LINE_LENGTH_MAX 65536
 

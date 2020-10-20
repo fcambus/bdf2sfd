@@ -1,3 +1,10 @@
+bdf2sfd 1.1.5 (2020-10-20)
+
+- Enable FORTIFY_SOURCE level 2
+- Check strdup() return value and error out on failed allocations
+
+
+
 bdf2sfd 1.1.4 (2020-10-08)
 
 - Add support for seccomp on arm

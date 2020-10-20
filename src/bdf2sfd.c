@@ -243,7 +243,7 @@ main(int argc, char *argv[])
 			if (!errstr)
 				font.descent = descent * ylength;
 			else
-				error( "Invalid value for FONT_DESCENT.");
+				error("Invalid value for FONT_DESCENT.");
 
 			continue;
 

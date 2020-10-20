@@ -4,7 +4,7 @@
  * https://github.com/fcambus/bdf2sfd
  *
  * Created:      2019-11-21
- * Last Updated: 2020-06-12
+ * Last Updated: 2020-10-20
  *
  * bdf2sfd is released under the BSD 2-Clause license
  * See LICENSE file for details
@@ -178,19 +178,24 @@ main(int argc, char *argv[])
 		switch(key) {
 		case FAMILY_NAME:
 			if (!font.name) {
-				font.name = strdup(value);
+				if ((font.name = strdup(value)) == NULL)
+					error("Memory allocation error.");
+
 				name_allocated = true;
 			}
 
 			if (!font.psname) {
-				font.psname = strdup(value);
+				if ((font.psname = strdup(value)) == NULL)
+					error("Memory allocation error.");
+
 				psname_allocated = true;
 			}
 
 			continue;
 
 		case COPYRIGHT:
-			font.copyright = strdup(value);
+			if ((font.copyright = strdup(value)) == NULL)
+				error("Memory allocation error.");
 
 			continue;
 
@@ -243,7 +248,8 @@ main(int argc, char *argv[])
 			continue;
 
 		case FONT_VERSION:
-			font.version = strdup(value);
+			if ((font.version = strdup(value)) == NULL)
+				error("Memory allocation error.");
 
 			continue;
 

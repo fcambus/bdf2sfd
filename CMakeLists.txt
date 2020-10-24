@@ -4,7 +4,7 @@
 # https://github.com/fcambus/bdf2sfd
 #
 # Created:      2019-11-21
-# Last Updated: 2020-10-10
+# Last Updated: 2020-10-24
 #
 # bdf2sfd is released under the BSD 2-Clause license
 # See LICENSE file for details
@@ -41,7 +41,6 @@ endif(ENABLE_SECCOMP)
 # Additional include directories for compat functions + dependencies
 include_directories("compat")
 
-set(CMAKE_BUILD_TYPE Release)
 set(SRC src/bdf2sfd.c src/header.c src/parse.c src/polygon.c)
 
 if(NOT HAVE_PLEDGE)

@@ -4,7 +4,7 @@
  * https://github.com/fcambus/bdf2sfd
  *
  * Created:      2019-11-21
- * Last Updated: 2020-10-20
+ * Last Updated: 2020-12-15
  *
  * bdf2sfd is released under the BSD 2-Clause license
  * See LICENSE file for details
@@ -35,21 +35,6 @@
 #include "parse.h"
 #include "polygon.h"
 
-struct timespec begin, end, elapsed;
-
-char lineBuffer[LINE_LENGTH_MAX];
-
-FILE *bdfFile;
-struct stat bdfFileStat;
-
-const char *errstr;
-
-int8_t getoptFlag;
-
-char *intputFile;
-
-uint64_t glyphes;
-
 static void
 displayUsage()
 {
@@ -73,8 +58,13 @@ main(int argc, char *argv[])
 	bool readglyph = false;
 	bool name_allocated = false, psname_allocated = false;
 
+	char *intputFile;
 	char *value = NULL;
+	char lineBuffer[LINE_LENGTH_MAX];
 
+	const char *errstr = NULL;
+
+	int8_t getoptFlag;
 	int key, stride;
 
 	float x = 0.0, y = 0.0;
@@ -83,9 +73,15 @@ main(int argc, char *argv[])
 	uint32_t height = 0, width = 0;
 	uint32_t ascent = 0, descent = 0;
 	uint32_t mask = 0;
+	uint64_t glyphes = 0;
+
+	struct timespec begin, end, elapsed;
+	struct stat bdfFileStat;
 
 	struct fontinfo font;
 	memset(&font, 0, sizeof(struct fontinfo));
+
+	FILE *bdfFile;
 
 	if (pledge("stdio rpath", NULL) == -1) {
 		err(EXIT_FAILURE, "pledge");

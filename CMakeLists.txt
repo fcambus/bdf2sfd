@@ -4,7 +4,7 @@
 # https://github.com/fcambus/bdf2sfd
 #
 # Created:      2019-11-21
-# Last Updated: 2020-10-24
+# Last Updated: 2021-02-09
 #
 # bdf2sfd is released under the BSD 2-Clause license
 # See LICENSE file for details
@@ -51,7 +51,6 @@ if(NOT HAVE_STRTONUM)
   set (SRC ${SRC} compat/strtonum.c)
 endif()
 
-set(CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS_RELEASE} -D_FORTIFY_SOURCE=2")
 add_definitions(-D_GNU_SOURCE -Wall -Wextra -std=c99 -pedantic)
 add_executable(bdf2sfd ${SRC})
 

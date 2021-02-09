@@ -55,33 +55,31 @@ error(const char *str)
 int
 main(int argc, char *argv[])
 {
-	bool readglyph = false;
-	bool name_allocated = false, psname_allocated = false;
-
-	char *input;
-	char *value = NULL;
-	char linebuffer[LINE_LENGTH_MAX];
-
-	const char *errstr = NULL;
-
-	int8_t opt;
-	int key, stride;
+	struct timespec begin, current, elapsed;
+	struct stat bdf_stat;
 
 	float x = 0.0, y = 0.0;
 	float xlength = 64.0, ylength = 64.0; /* Default for 8x16 fonts */
 
+	uint64_t glyphes = 0;
 	uint32_t height = 0, width = 0;
 	uint32_t ascent = 0, descent = 0;
 	uint32_t mask = 0;
-	uint64_t glyphes = 0;
 
-	struct timespec begin, current, elapsed;
-	struct stat bdf_stat;
+	int opt, key, stride;
+
+	const char *errstr = NULL;
+	char *input;
+	char *value = NULL;
+	char linebuffer[LINE_LENGTH_MAX];
+
+	bool readglyph = false;
+	bool name_allocated = false, psname_allocated = false;
+
+	FILE *bdf;
 
 	struct fontinfo font;
 	memset(&font, 0, sizeof(struct fontinfo));
-
-	FILE *bdf;
 
 	if (pledge("stdio rpath", NULL) == -1) {
 		err(EXIT_FAILURE, "pledge");

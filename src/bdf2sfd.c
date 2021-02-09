@@ -4,7 +4,7 @@
  * https://github.com/fcambus/bdf2sfd
  *
  * Created:      2019-11-21
- * Last Updated: 2020-12-15
+ * Last Updated: 2021-02-09
  *
  * bdf2sfd is released under the BSD 2-Clause license
  * See LICENSE file for details
@@ -58,13 +58,13 @@ main(int argc, char *argv[])
 	bool readglyph = false;
 	bool name_allocated = false, psname_allocated = false;
 
-	char *intputFile;
+	char *input;
 	char *value = NULL;
-	char lineBuffer[LINE_LENGTH_MAX];
+	char linebuffer[LINE_LENGTH_MAX];
 
 	const char *errstr = NULL;
 
-	int8_t getoptFlag;
+	int8_t opt;
 	int key, stride;
 
 	float x = 0.0, y = 0.0;
@@ -75,13 +75,13 @@ main(int argc, char *argv[])
 	uint32_t mask = 0;
 	uint64_t glyphes = 0;
 
-	struct timespec begin, end, elapsed;
-	struct stat bdfFileStat;
+	struct timespec begin, current, elapsed;
+	struct stat bdf_stat;
 
 	struct fontinfo font;
 	memset(&font, 0, sizeof(struct fontinfo));
 
-	FILE *bdfFile;
+	FILE *bdf;
 
 	if (pledge("stdio rpath", NULL) == -1) {
 		err(EXIT_FAILURE, "pledge");
@@ -99,8 +99,8 @@ main(int argc, char *argv[])
 	}
 #endif
 
-	while ((getoptFlag = getopt(argc, argv, "f:p:hv")) != -1) {
-		switch (getoptFlag) {
+	while ((opt = getopt(argc, argv, "f:p:hv")) != -1) {
+		switch (opt) {
 		case 'f':
 			font.name = optarg;
 			break;
@@ -120,7 +120,7 @@ main(int argc, char *argv[])
 	}
 
 	if (optind < argc) {
-		intputFile = argv[optind];
+		input = argv[optind];
 	} else {
 		displayUsage();
 		return EXIT_SUCCESS;
@@ -130,28 +130,28 @@ main(int argc, char *argv[])
 	clock_gettime(CLOCK_MONOTONIC, &begin);
 
 	/* Open BDF file */
-	if (!strcmp(intputFile, "-")) {
+	if (!strcmp(input, "-")) {
 		/* Read from standard input */
-		bdfFile = stdin;
+		bdf = stdin;
 	} else {
 		/* Attempt to read from file */
-		if (!(bdfFile = fopen(intputFile, "r"))) {
+		if (!(bdf = fopen(input, "r"))) {
 			perror("Can't open BDF file");
 			return EXIT_FAILURE;
 		}
 	}
 
 	/* Get BDF file size */
-	if (fstat(fileno(bdfFile), &bdfFileStat)) {
+	if (fstat(fileno(bdf), &bdf_stat)) {
 		perror("Can't stat BDF file");
 		return EXIT_FAILURE;
 	}
 
-	while (fgets(lineBuffer, LINE_LENGTH_MAX, bdfFile)) {
-		if (!*lineBuffer)
+	while (fgets(linebuffer, LINE_LENGTH_MAX, bdf)) {
+		if (!*linebuffer)
 			continue;
 
-		key = parseLine(lineBuffer);
+		key = parseLine(linebuffer);
 
 		switch(key) {
 		case FAMILY_NAME:
@@ -289,7 +289,7 @@ main(int argc, char *argv[])
 		}
 
 		if (readglyph) {
-			uint32_t row = strtoul(lineBuffer, NULL, 16);
+			uint32_t row = strtoul(linebuffer, NULL, 16);
 
 			polygon(row, mask, width, x, y, xlength, ylength);
 			
@@ -301,16 +301,16 @@ main(int argc, char *argv[])
 			"EndSplineFont\n");
 
 	/* Stopping timer */
-	clock_gettime(CLOCK_MONOTONIC, &end);
+	clock_gettime(CLOCK_MONOTONIC, &current);
 
-	timespecsub(&end, &begin, &elapsed);
+	timespecsub(&current, &begin, &elapsed);
 
 	/* Printing results */
 	fprintf(stderr, "Processed %" PRIu64 " glyphes in %f seconds.\n",
 	    glyphes, elapsed.tv_sec + elapsed.tv_nsec / 1E9);
 
 	/* Clean up */
-	fclose(bdfFile);
+	fclose(bdf);
 
 	if (name_allocated)
 		free(font.name);

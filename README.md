@@ -48,7 +48,7 @@ Packages are available for the following operating systems:
 
 ## Usage
 
-	bdf2sfd [-hv] [-f name] [-p name] file
+	bdf2sfd [-hv] [-f name] [-p name] font.bdf
 
 If file is a single dash (`-'), bdf2sfd reads from the standard input.
 

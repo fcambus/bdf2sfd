@@ -4,7 +4,7 @@
  * https://github.com/fcambus/bdf2sfd
  *
  * Created:      2019-11-21
- * Last Updated: 2021-02-09
+ * Last Updated: 2021-02-12
  *
  * bdf2sfd is released under the BSD 2-Clause license
  * See LICENSE file for details
@@ -38,12 +38,12 @@
 static void
 displayUsage()
 {
-	printf("bdf2sfd [-hv] [-f name] [-p name] file \n\n"
+	printf("bdf2sfd [-hv] [-f name] [-p name] font.bdf\n\n"
 	    "The options are as follows:\n\n"
-	    "     -f name     Specify font name.\n"
-	    "     -p name     Specify PostScript font name.\n"
-	    "     -h          Display usage.\n"
-	    "     -v          Display version.\n");
+	    "	-f name	Specify font name.\n"
+	    "	-p name	Specify PostScript font name.\n"
+	    "	-h	Display usage.\n"
+	    "	-v	Display version.\n");
 }
 
 static void

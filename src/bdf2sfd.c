@@ -36,7 +36,7 @@
 #include "polygon.h"
 
 static void
-displayUsage()
+usage()
 {
 	printf("bdf2sfd [-hv] [-f name] [-p name] font.bdf\n\n"
 	    "The options are as follows:\n\n"
@@ -108,7 +108,7 @@ main(int argc, char *argv[])
 			break;
 
 		case 'h':
-			displayUsage();
+			usage();
 			return EXIT_SUCCESS;
 
 		case 'v':
@@ -120,7 +120,7 @@ main(int argc, char *argv[])
 	if (optind < argc) {
 		input = argv[optind];
 	} else {
-		displayUsage();
+		usage();
 		return EXIT_SUCCESS;
 	}
 

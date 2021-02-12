@@ -1,3 +1,15 @@
+bdf2sfd 1.1.6 (2021-02-12)
+
+- Stop forcing FORTIFY_SOURCE=2, it should be package builders decision
+- Get rid of global variables, move all declarations to main()
+- Remove dead increments for argc and argv
+- Rename a few variables to get rid of all camelCase occurences
+- Reorder and reformat variables declaration
+- Try to harmonize usage information everywhere
+- Rename the displayUsage() function to usage()
+
+
+
 bdf2sfd 1.1.5 (2020-10-20)
 
 - Enable FORTIFY_SOURCE level 2

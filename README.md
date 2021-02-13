@@ -113,3 +113,7 @@ GitHub: https://github.com/fcambus/bdf2sfd
 [8]: https://packages.debian.org/search?keywords=bdf2sfd
 [9]: https://packages.ubuntu.com/bdf2sfd
 [10]: https://github.com/NixOS/nixpkgs/tree/master/pkgs/tools/misc/bdf2sfd
+
+## Packaging status
+
+[![Packaging status](https://repology.org/badge/vertical-allrepos/bdf2sfd.svg)](https://repology.org/project/bdf2sfd/versions)

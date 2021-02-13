@@ -116,4 +116,4 @@ GitHub: https://github.com/fcambus/bdf2sfd
 
 ## Packaging status
 
-https://repology.org/project/bdf2sfd/badges
+[![Packaging status](https://repology.org/badge/vertical-allrepos/bdf2sfd.svg)](https://repology.org/project/bdf2sfd/versions)

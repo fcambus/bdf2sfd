@@ -4,7 +4,7 @@
  * https://github.com/fcambus/bdf2sfd
  *
  * Created:      2019-11-21
- * Last Updated: 2021-02-12
+ * Last Updated: 2021-02-28
  *
  * bdf2sfd is released under the BSD 2-Clause license
  * See LICENSE file for details
@@ -61,7 +61,7 @@ main(int argc, char *argv[])
 	float x = 0.0, y = 0.0;
 	float xlength = 64.0, ylength = 64.0; /* Default for 8x16 fonts */
 
-	uint64_t glyphes = 0;
+	uint64_t glyphs = 0;
 	uint32_t height = 0, width = 0;
 	uint32_t ascent = 0, descent = 0;
 	uint32_t mask = 0;
@@ -274,7 +274,7 @@ main(int argc, char *argv[])
 
 			y = font.ascent;
 			readglyph = true;
-			glyphes++;
+			glyphs++;
 
 			continue;
 
@@ -304,8 +304,8 @@ main(int argc, char *argv[])
 	timespecsub(&current, &begin, &elapsed);
 
 	/* Printing results */
-	fprintf(stderr, "Processed %" PRIu64 " glyphes in %f seconds.\n",
-	    glyphes, elapsed.tv_sec + elapsed.tv_nsec / 1E9);
+	fprintf(stderr, "Processed %" PRIu64 " glyphs in %f seconds.\n",
+	    glyphs, elapsed.tv_sec + elapsed.tv_nsec / 1E9);
 
 	/* Clean up */
 	fclose(bdf);

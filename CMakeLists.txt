@@ -4,13 +4,13 @@
 # https://github.com/fcambus/bdf2sfd
 #
 # Created:      2019-11-21
-# Last Updated: 2021-02-09
+# Last Updated: 2021-04-04
 #
 # bdf2sfd is released under the BSD 2-Clause license
 # See LICENSE file for details
 #
 
-cmake_minimum_required (VERSION 2.6)
+cmake_minimum_required (VERSION 2.8.12)
 
 project(bdf2sfd C)
 

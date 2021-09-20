@@ -6,8 +6,8 @@
  * Created:      2019-11-21
  * Last Updated: 2020-10-08
  *
- * bdf2sfd is released under the BSD 2-Clause license
- * See LICENSE file for details
+ * bdf2sfd is released under the BSD 2-Clause license.
+ * See LICENSE file for details.
  *
  * SPDX-License-Identifier: BSD-2-Clause
  */

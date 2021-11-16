@@ -4,7 +4,7 @@
  * https://github.com/fcambus/bdf2sfd
  *
  * Created:      2019-11-21
- * Last Updated: 2021-02-28
+ * Last Updated: 2021-11-16
  *
  * bdf2sfd is released under the BSD 2-Clause license.
  * See LICENSE file for details.
@@ -73,7 +73,8 @@ main(int argc, char *argv[])
 	const char *errstr = NULL;
 	char *input;
 	char *value = NULL;
-	char linebuffer[LINE_LENGTH_MAX];
+	char *linebuffer = NULL;
+	size_t linesize = 0;
 
 	bool readglyph = false;
 	bool name_allocated = false, psname_allocated = false;
@@ -147,7 +148,7 @@ main(int argc, char *argv[])
 		return EXIT_FAILURE;
 	}
 
-	while (fgets(linebuffer, LINE_LENGTH_MAX, bdf)) {
+	while (getline(&linebuffer, &linesize, bdf) != -1) {
 		if (!*linebuffer)
 			continue;
 
@@ -310,6 +311,7 @@ main(int argc, char *argv[])
 	    glyphs, elapsed.tv_sec + elapsed.tv_nsec / 1E9);
 
 	/* Clean up */
+	free(linebuffer);
 	fclose(bdf);
 
 	if (name_allocated)

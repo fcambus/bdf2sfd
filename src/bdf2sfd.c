@@ -1,5 +1,5 @@
 /*
- * bdf2sfd 1.1.6
+ * bdf2sfd 1.1.7
  * Copyright (c) 2019-2021, Frederic Cambus
  * https://github.com/fcambus/bdf2sfd
  *

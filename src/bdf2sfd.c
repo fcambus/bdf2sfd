@@ -4,7 +4,7 @@
  * https://github.com/fcambus/bdf2sfd
  *
  * Created:      2019-11-21
- * Last Updated: 2021-11-16
+ * Last Updated: 2022-02-10
  *
  * bdf2sfd is released under the BSD 2-Clause license.
  * See LICENSE file for details.
@@ -14,7 +14,6 @@
 
 #include <sys/stat.h>
 #include <sys/time.h>
-#include <sys/types.h>
 #include <err.h>
 #include <getopt.h>
 #include <inttypes.h>

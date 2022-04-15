@@ -41,10 +41,11 @@ Packages are available for the following operating systems:
 
 - [OpenBSD][5]
 - [NetBSD][6]
-- [Void Linux][7]
-- [Debian][8]
-- [Ubuntu][9]
-- [Nix][10]
+- [FreeBSD][7]
+- [Void Linux][8]
+- [Debian][9]
+- [Ubuntu][10]
+- [Nix][11]
 
 ## Usage
 
@@ -109,10 +110,11 @@ GitHub: https://github.com/fcambus/bdf2sfd
 [4]: https://github.com/fcambus/spleen
 [5]: https://cvsweb.openbsd.org/cgi-bin/cvsweb/ports/converters/bdf2sfd
 [6]: https://pkgsrc.se/converters/bdf2sfd
-[7]: https://github.com/void-linux/void-packages/tree/master/srcpkgs/bdf2sfd
-[8]: https://packages.debian.org/search?keywords=bdf2sfd
-[9]: https://packages.ubuntu.com/bdf2sfd
-[10]: https://github.com/NixOS/nixpkgs/tree/master/pkgs/tools/misc/bdf2sfd
+[7]: https://www.freshports.org/x11-fonts/bdf2sfd
+[8]: https://github.com/void-linux/void-packages/tree/master/srcpkgs/bdf2sfd
+[9]: https://packages.debian.org/search?keywords=bdf2sfd
+[10]: https://packages.ubuntu.com/bdf2sfd
+[11]: https://github.com/NixOS/nixpkgs/tree/master/pkgs/tools/misc/bdf2sfd
 
 ## Packaging status
 

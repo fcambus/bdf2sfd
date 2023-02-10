@@ -108,7 +108,7 @@ GitHub: https://github.com/fcambus/bdf2sfd
 [2]: https://fontforge.org/en-US/documentation/developers/sfdformat/
 [3]: https://fontforge.org
 [4]: https://github.com/fcambus/spleen
-[5]: https://cvsweb.openbsd.org/cgi-bin/cvsweb/ports/converters/bdf2sfd
+[5]: https://openports.pl/path/converters/bdf2sfd
 [6]: https://pkgsrc.se/converters/bdf2sfd
 [7]: https://www.freshports.org/x11-fonts/bdf2sfd
 [8]: https://github.com/void-linux/void-packages/tree/master/srcpkgs/bdf2sfd

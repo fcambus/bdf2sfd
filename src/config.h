@@ -1,6 +1,6 @@
 /*
  * bdf2sfd 1.1.7
- * Copyright (c) 2019-2022, Frederic Cambus
+ * Copyright (c) 2019-2023, Frederic Cambus
  * https://github.com/fcambus/bdf2sfd
  *
  * Created:      2019-11-21

@@ -4,7 +4,7 @@
 # https://github.com/fcambus/bdf2sfd
 #
 # Created:      2019-11-21
-# Last Updated: 2021-10-18
+# Last Updated: 2023-03-13
 #
 # bdf2sfd is released under the BSD 2-Clause license.
 # See LICENSE file for details.
@@ -60,7 +60,7 @@ add_definitions(-D_GNU_SOURCE -Wall -Wextra -pedantic)
 add_executable(bdf2sfd ${SRC})
 
 install(TARGETS bdf2sfd DESTINATION ${CMAKE_INSTALL_BINDIR})
-install(FILES bdf2sfd.1 DESTINATION ${CMAKE_INSTALL_MANDIR}/man1/)
+install(FILES man/bdf2sfd.1 DESTINATION ${CMAKE_INSTALL_MANDIR}/man1/)
 
 enable_testing()
 add_test(bdf2sfd bdf2sfd)

@@ -4,7 +4,7 @@
  * https://github.com/fcambus/bdf2sfd
  *
  * Created:      2019-11-21
- * Last Updated: 2022-02-10
+ * Last Updated: 2023-03-13
  *
  * bdf2sfd is released under the BSD 2-Clause license.
  * See LICENSE file for details.
@@ -37,7 +37,7 @@
 #include "polygon.h"
 
 static void
-usage()
+usage(void)
 {
 	printf("bdf2sfd [-hv] [-f name] [-p name] font.bdf\n\n"
 	    "The options are as follows:\n\n"

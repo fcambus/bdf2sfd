@@ -37,7 +37,7 @@ and Linux with both Clang and GCC.
 
 ## Packages
 
-Packages are available for the following operating systems:
+bdf2sfd packages are available for:
 
 - [OpenBSD][5]
 - [NetBSD][6]

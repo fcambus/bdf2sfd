@@ -1,3 +1,11 @@
+bdf2sfd 1.1.8 (2023-03-30)
+
+- Remove unneeded <sys/types.h> include
+- Add missing void to the usage() function definition
+- Move manual page to the man directory
+
+
+
 bdf2sfd 1.1.7 (2021-11-16)
 
 - Rename the "glyphes" variable to "glyphs"

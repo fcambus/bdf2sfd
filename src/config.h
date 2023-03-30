@@ -1,5 +1,5 @@
 /*
- * bdf2sfd 1.1.7
+ * bdf2sfd 1.1.8
  * Copyright (c) 2019-2023, Frederic Cambus
  * https://github.com/fcambus/bdf2sfd
  *
@@ -15,6 +15,6 @@
 #ifndef CONFIG_H
 #define CONFIG_H
 
-#define VERSION "bdf2sfd 1.1.7"
+#define VERSION "bdf2sfd 1.1.8"
 
 #endif /* CONFIG_H */

@@ -106,7 +106,7 @@ bdf2sfd is developed by Frederic Cambus.
 GitHub: https://github.com/fcambus/bdf2sfd
 
 [1]: https://en.wikipedia.org/wiki/Glyph_Bitmap_Distribution_Format
-[2]: https://fontforge.org/en-US/documentation/developers/sfdformat/
+[2]: https://fontforge.org/docs/techref/sfdformat.html
 [3]: https://fontforge.org
 [4]: https://github.com/fcambus/spleen
 [5]: https://openports.pl/path/converters/bdf2sfd

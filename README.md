@@ -47,6 +47,7 @@ bdf2sfd packages are available for:
 - [Ubuntu][10]
 - [Nix][11]
 - [Gentoo][12]
+- [Guix][13]
 
 ## Usage
 
@@ -117,6 +118,7 @@ GitHub: https://github.com/fcambus/bdf2sfd
 [10]: https://packages.ubuntu.com/bdf2sfd
 [11]: https://github.com/NixOS/nixpkgs/tree/master/pkgs/tools/misc/bdf2sfd
 [12]: https://packages.gentoo.org/packages/media-fonts/bdf2sfd
+[13]: https://packages.guix.gnu.org/packages/bdf2sfd
 
 ## Packaging status
 

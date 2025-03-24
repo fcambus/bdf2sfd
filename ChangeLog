@@ -1,3 +1,12 @@
+bdf2sfd 1.1.9 (2025-03-24)
+
+- Add links to the Gentoo and Guix packages in the README
+- Add initial RPM spec file
+- Bump cmake_minimum_required to 3.5, to allow building with CMake 4.0
+- Bump cmake_minimum_required to 3.10 to be more future proof
+
+
+
 bdf2sfd 1.1.8 (2023-03-30)
 
 - Remove unneeded <sys/types.h> include

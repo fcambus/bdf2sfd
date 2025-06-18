@@ -116,7 +116,7 @@ GitHub: https://github.com/fcambus/bdf2sfd
 [8]: https://github.com/void-linux/void-packages/tree/master/srcpkgs/bdf2sfd
 [9]: https://packages.debian.org/search?keywords=bdf2sfd
 [10]: https://packages.ubuntu.com/bdf2sfd
-[11]: https://github.com/NixOS/nixpkgs/tree/master/pkgs/tools/misc/bdf2sfd
+[11]: https://github.com/NixOS/nixpkgs/tree/master/pkgs/by-name/bd/bdf2sfd
 [12]: https://packages.gentoo.org/packages/media-fonts/bdf2sfd
 [13]: https://packages.guix.gnu.org/packages/bdf2sfd
 

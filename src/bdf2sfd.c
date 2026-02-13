@@ -4,7 +4,7 @@
  * https://github.com/fcambus/bdf2sfd
  *
  * Created:      2019-11-21
- * Last Updated: 2023-03-13
+ * Last Updated: 2026-02-13
  *
  * bdf2sfd is released under the BSD 2-Clause license.
  * See LICENSE file for details.
@@ -143,6 +143,7 @@ main(int argc, char *argv[])
 
 	/* Get BDF file size */
 	if (fstat(fileno(bdf), &bdf_stat)) {
+		fclose(bdf);
 		perror("Can't stat BDF file");
 		return EXIT_FAILURE;
 	}

@@ -4,7 +4,7 @@
  * https://github.com/fcambus/bdf2sfd
  *
  * Created:      2019-11-21
- * Last Updated: 2020-10-08
+ * Last Updated: 2026-02-13
  *
  * bdf2sfd is released under the BSD 2-Clause license.
  * See LICENSE file for details.
@@ -13,15 +13,33 @@
  */
 
 #include <sys/time.h>
+#include <inttypes.h>
 #include <stdio.h>
+#include <stdlib.h>
 
+#include "compat.h"
 #include "header.h"
 
 void
 header(FILE *stream, struct fontinfo *font)
 {
+	char *source_date_epoch;
+	const char *errstr = NULL;
+
+	int64_t creation_time, source_epoch;
+
 	struct timeval tv;
 	gettimeofday(&tv, NULL);
+
+	creation_time = tv.tv_sec;
+
+	source_date_epoch = getenv("SOURCE_DATE_EPOCH");
+
+	if (source_date_epoch) {
+		source_epoch = strtonum(source_date_epoch, 0, INT64_MAX, &errstr);
+		if (!errstr)
+		    creation_time = source_epoch;
+	}
 
 	fprintf(stream, "SplineFontDB: 3.0\n");
 	fprintf(stream, "FontName: %s\n", font->psname);
@@ -47,7 +65,7 @@ header(FILE *stream, struct fontinfo *font)
 			"OS2Version: 0\n"
 			"OS2_WeightWidthSlopeOnly: 0\n"
 			"OS2_UseTypoMetrics: 0\n");
-	fprintf(stream, "CreationTime: %ld\n", tv.tv_sec);
+	fprintf(stream, "CreationTime: %" PRId64 "\n", creation_time);
 	fprintf(stream, "PfmFamily: 33\n"
 			"TTFWeight: 500\n"
 			"TTFWidth: 5\n"

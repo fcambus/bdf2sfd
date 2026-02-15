@@ -1,3 +1,10 @@
+bdf2sfd 1.2.0 (2026-02-15)
+
+- Close stream on error path if the call to fstat() fails
+- Honour SOURCE_DATE_EPOCH when setting CreationTime for reproducibility
+
+
+
 bdf2sfd 1.1.9 (2025-03-24)
 
 - Add links to the Gentoo and Guix packages in the README

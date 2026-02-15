@@ -64,6 +64,13 @@ The options are as follows:
 
 bdf2sfd outputs SFD data to **stdout**.
 
+## Environment variables
+
+bdf2sfd honours the `SOURCE_DATE_EPOCH` environment variable.
+
+When set, its value is used as the font CreationTime instead of the current
+system time. This allows generating reproducible output files.
+
 ### Post-processing
 
 The SFD files created by bdf2sfd should be post-processed with FontForge
